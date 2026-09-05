@@ -3,11 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShiftPro · Il calendario per chi lavora su turni</title>
-<meta name="description" content="ShiftPro trasforma turni flessibili, rotazioni e straordinari in un calendario semplice, con statistiche e stima della paga sempre aggiornate. Per iPhone.">
-<meta property="og:title" content="ShiftPro · Il calendario per chi lavora su turni">
-<meta property="og:description" content="Turni flessibili, rotazioni automatiche, ore e stima paga. Il calendario turni per iPhone.">
+<title>ShiftPro · Turni di lavoro, ore, straordinari e stipendio</title>
+<meta name="description" content="ShiftPro è il calendario turni per iPhone che ti dice anche quanto ti frutta il mese: ore ordinarie, straordinari, notturni e festivi, con stima di stipendio lordo e netto. Per infermieri, OSS, operai, autisti e chi lavora su turni.">
+<meta property="og:title" content="ShiftPro · Turni di lavoro, ore, straordinari e stipendio">
+<meta property="og:description" content="Il calendario turni per iPhone che calcola ore, straordinari e stima dello stipendio del mese. Rotazioni automatiche, turni flessibili, sincronizzazione gratuita.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="apple-mobile-web-app-title" content="ShiftPro">
+<meta name="theme-color" content="#1D9E75">
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,6 +109,17 @@
   .foot-links a{color:var(--grigio);font-weight:600;font-size:.95rem;}
   .foot-links a:hover{color:var(--verde);}
   .foot-note{margin-top:22px;font-size:.85rem;color:#9aa0ad;}
+  /* Piani: cosa è gratis e cosa sblocca Premium */
+  .piani{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;}
+  .piano{background:var(--sfondo);border:1px solid var(--bordo);border-radius:var(--raggio);padding:28px;}
+  .piano.evid{border-color:var(--verde);box-shadow:var(--ombra);}
+  .piano .tag{display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--verde-scuro);background:var(--verde-chiaro);padding:5px 11px;border-radius:99px;margin-bottom:14px;}
+  .piano h3{font-size:1.25rem;margin-bottom:8px;}
+  .piano>p{color:var(--grigio);}
+  .piano ul{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px;}
+  .piano li{padding-left:27px;position:relative;color:var(--grigio);}
+  .piano li::before{content:"";position:absolute;left:2px;top:.42em;width:13px;height:7px;border-left:2.5px solid var(--verde);border-bottom:2.5px solid var(--verde);transform:rotate(-45deg);}
+  .piano .nota{margin-top:18px;padding-top:16px;border-top:1px solid var(--bordo);font-size:.9rem;color:var(--grigio);}
 </style>
 </head>
 <body>
@@ -115,6 +129,7 @@
     <a class="brand" href="#top"><img src="logo.png" alt="ShiftPro">ShiftPro</a>
     <nav class="nav-links">
       <a href="#funzioni">Funzioni</a>
+      <a href="#prezzi">Prezzi</a>
       <a href="#privacy">Privacy</a>
       <a href="assistenza.html">Assistenza</a>
       <a class="btn btn-primary" href="#scarica">Scarica</a>
@@ -127,9 +142,9 @@
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">📅 Calendario turni per iPhone</span>
-        <h1>I tuoi turni di lavoro,<br><span class="verde">finalmente in ordine.</span></h1>
-        <p class="lead">ShiftPro trasforma orari flessibili, rotazioni e straordinari in un calendario semplice — con ore, statistiche e stima della paga sempre aggiornate.</p>
+        <span class="eyebrow">Calendario turni per iPhone</span>
+        <h1>Sai che turno fai.<br><span class="verde">Ma sai quanto ti frutta?</span></h1>
+        <p class="lead">ShiftPro mette in ordine turni e rotazioni come ogni buon calendario — e in più conta ore ordinarie, straordinari, notturni e festivi, con la stima dello stipendio lordo e netto del mese. Prima che arrivi la busta paga.</p>
         <div class="cta-row">
           <a class="badge-store" href="#scarica">
             <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.5 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.6zM256.6 93c31-36.8 28.2-70.3 27.3-82.4-27.4 1.6-59.1 18.7-77.2 39.7-19.9 22.6-31.6 50.5-29.1 81.9 29.6 2.3 56.7-12.9 79-39.2z"/></svg>
@@ -161,35 +176,35 @@
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Le funzioni</span>
-        <h2>Pensata per turni che cambiano ogni giorno</h2>
-        <p>Niente più liste infinite di turni per ogni piccola variazione. ShiftPro parte da pochi turni e li adatta al volo.</p>
-      </div>
-
-      <div class="feature">
-        <div class="f-text">
-          <div class="f-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-          <h3>Un turno, mille varianti</h3>
-          <p>Entri un'ora prima? Esci mezz'ora dopo? Sposti solo quel giorno con uno scostamento, senza creare un turno nuovo ogni volta. Basta con le centinaia di turni quasi identici.</p>
-        </div>
-        <div class="f-shot"><img src="screen-07.jpg" alt="Modifica di un giorno" loading="lazy"></div>
-      </div>
-
-      <div class="feature rev">
-        <div class="f-text">
-          <div class="f-ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 16M4 20v-4h4"/></svg></div>
-          <h3>Rotazioni che si ripetono da sole</h3>
-          <p>Imposta il tuo ciclo una volta e ShiftPro riempie i mesi — e gli anni — in automatico. Un'eccezione vale solo per il giorno che scegli, senza riscrivere il resto.</p>
-        </div>
-        <div class="f-shot"><img src="screen-04.jpg" alt="Rotazione" loading="lazy"></div>
+        <h2>Un calendario che sa fare i conti</h2>
+        <p>Le app per turni si fermano a dirti quando lavori. ShiftPro parte da lì e arriva a quanto guadagni.</p>
       </div>
 
       <div class="feature">
         <div class="f-text">
           <div class="f-ico"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-          <h3>Ore, straordinario e stima paga</h3>
-          <p>Ore ordinarie, straordinario oltre la tua soglia, giorni lavorati e stima della paga lorda e netta — per il mese e da inizio anno. Con confronto sullo stesso periodo del mese scorso.</p>
+          <h3>Ore, straordinari e stima dello stipendio</h3>
+          <p>Ore ordinarie, straordinario oltre la tua soglia, notturni, festivi e giorni lavorati — con la stima dello stipendio lordo e, se imposti il tuo coefficiente, anche del netto. Per il mese e da inizio anno, con il confronto sullo stesso periodo del mese scorso.</p>
         </div>
-        <div class="f-shot"><img src="screen-05.jpg" alt="Statistiche" loading="lazy"></div>
+        <div class="f-shot"><img src="screen-05.jpg" alt="Statistiche di ore, straordinari e stima dello stipendio" loading="lazy"></div>
+      </div>
+
+      <div class="feature rev">
+        <div class="f-text">
+          <div class="f-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+          <h3>Un turno, mille varianti</h3>
+          <p>Entri un'ora prima? Esci mezz'ora dopo? Sposti solo quel giorno con uno scostamento, senza creare un turno nuovo ogni volta. Basta con le centinaia di turni quasi identici.</p>
+        </div>
+        <div class="f-shot"><img src="screen-07.jpg" alt="Modifica di un singolo giorno di turno" loading="lazy"></div>
+      </div>
+
+      <div class="feature">
+        <div class="f-text">
+          <div class="f-ico"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-13.7 5.6L4 16M4 20v-4h4"/></svg></div>
+          <h3>Rotazioni che si ripetono da sole</h3>
+          <p>Imposta il tuo ciclo una volta e ShiftPro riempie i mesi — e gli anni — in automatico. Un'eccezione vale solo per il giorno che scegli, senza riscrivere il resto.</p>
+        </div>
+        <div class="f-shot"><img src="screen-04.jpg" alt="Rotazione dei turni impostata una volta sola" loading="lazy"></div>
       </div>
 
       <div class="feature rev">
@@ -198,12 +213,50 @@
           <h3>Esporta e condividi</h3>
           <p>Genera un report PDF del mese da salvare o stampare, oppure esporta i tuoi turni verso Calendario, Google Calendar o Outlook in un tocco.</p>
         </div>
-        <div class="f-shot"><img src="screen-08.jpg" alt="Report ed esportazione" loading="lazy"></div>
+        <div class="f-shot"><img src="screen-08.jpg" alt="Report PDF ed esportazione dei turni" loading="lazy"></div>
       </div>
     </div>
   </section>
 
-  <section id="privacy" class="alt">
+  <section id="prezzi" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Gratis e Premium</span>
+        <h2>Tutto quello che serve, gratis</h2>
+        <p>Il calendario, i calcoli e la sincronizzazione non costano nulla. Premium aggiunge tre cose, e nient'altro.</p>
+      </div>
+      <div class="piani">
+        <div class="piano">
+          <span class="tag">Gratis per sempre</span>
+          <h3>ShiftPro</h3>
+          <p>Non è una prova a tempo: è l'app completa per l'uso di tutti i giorni.</p>
+          <ul>
+            <li>Calendario, turni flessibili ed eccezioni sul singolo giorno</li>
+            <li>Rotazioni automatiche, impostate una volta sola</li>
+            <li>Ore ordinarie, straordinari, notturni e festivi</li>
+            <li>Stima dello stipendio lordo e netto del mese</li>
+            <li>Festività nazionali e le tue festività locali</li>
+            <li>Sincronizzazione fra i tuoi dispositivi</li>
+            <li>Backup manuale da esportare e ripristinare</li>
+          </ul>
+          <p class="nota">Funziona anche completamente offline: l'account serve solo se vuoi ritrovare i turni su più dispositivi.</p>
+        </div>
+        <div class="piano evid">
+          <span class="tag">Abbonamento o acquisto unico</span>
+          <h3>ShiftPro Premium</h3>
+          <p>Per chi tiene i conti nel tempo e deve consegnare o archiviare i propri turni.</p>
+          <ul>
+            <li>Riepilogo da inizio anno e andamento mese per mese</li>
+            <li>Esportazione del report mensile in PDF</li>
+            <li>Esportazione dei turni sul calendario di sistema, Google o Outlook</li>
+          </ul>
+          <p class="nota">Mensile, annuale con 7 giorni di prova gratuita, oppure un acquisto unico a vita. Il prezzo esatto è mostrato nell'app al momento dell'acquisto, e l'abbonamento si disdice quando vuoi dalle impostazioni dell'iPhone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">Privacy</span>
@@ -234,19 +287,23 @@
     <div class="wrap sec-head" style="max-width:760px;">
       <span class="eyebrow">La storia</span>
       <h2>Nata da chi i turni li fa davvero</h2>
-      <p>ShiftPro nasce dalla frustrazione di gestire orari che cambiano ogni giorno con app pensate per turni fissi. L'abbiamo costruita per chi lavora su turni — infermieri, operai, addetti alla vendita, autisti — perché tenere in ordine il proprio lavoro non dovrebbe essere un secondo lavoro.</p>
+      <p>ShiftPro nasce dalla frustrazione di gestire orari che cambiano ogni giorno con app pensate per turni fissi — e dal fatto che quasi nessuna risponde alla domanda che conta a fine mese: quanto mi entra davvero. È pensata per chi lavora su turni: infermieri, OSS, medici, operai di produzione, autisti, addetti alla vigilanza, personale di negozio e chiunque timbri su turnazione. Tenere in ordine il proprio lavoro non dovrebbe essere un secondo lavoro.</p>
     </div>
   </section>
 
   <section id="scarica">
     <div class="wrap">
       <div class="download">
-        <h2>Metti in ordine i tuoi turni</h2>
-        <p>ShiftPro sta arrivando sull'App Store. Preparati a dire addio alle liste infinite di turni.</p>
-        <a class="badge-store" href="#scarica">
+        <h2>Scopri quanto ti frutta il mese</h2>
+        <p>ShiftPro sta arrivando sull'App Store, gratis. Il calendario, i calcoli e la sincronizzazione non costano nulla.</p>
+        <!-- Al rilascio: sostituire questo <div> con
+             <a class="badge-store" href="https://apps.apple.com/it/app/id6804266189">
+             e cambiare "Presto disponibile su" in "Scarica su".
+             Finché l'app non è pubblicata quel link darebbe 404, quindi resta un elemento non cliccabile. -->
+        <div class="badge-store">
           <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.5 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.6zM256.6 93c31-36.8 28.2-70.3 27.3-82.4-27.4 1.6-59.1 18.7-77.2 39.7-19.9 22.6-31.6 50.5-29.1 81.9 29.6 2.3 56.7-12.9 79-39.2z"/></svg>
           <span><small>Presto disponibile su</small><b>App Store</b></span>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -259,6 +316,7 @@
       <a class="brand" href="#top"><img src="logo.png" alt="ShiftPro" style="width:30px;height:30px;border-radius:8px;">ShiftPro</a>
       <nav class="foot-links">
         <a href="#funzioni">Funzioni</a>
+        <a href="#prezzi">Prezzi</a>
         <a href="assistenza.html">Assistenza</a>
         <a href="privacy.html">Privacy</a>
         <a href="termini.html">Termini</a>
@@ -268,6 +326,30 @@
     <p class="foot-note">© 2026 Matteo De Min · ShiftPro — Gestione Turni. Tutti i marchi citati appartengono ai rispettivi proprietari.</p>
   </div>
 </footer>
+
+<!-- Dati strutturati: aiutano Google a capire che questa pagina descrive
+     un'app iOS gratuita, e a mostrarne prezzo e categoria nei risultati. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ShiftPro - Gestione Turni",
+  "operatingSystem": "iOS 17.0 o successivo",
+  "applicationCategory": "BusinessApplication",
+  "inLanguage": "it-IT",
+  "description": "Calendario turni per iPhone che calcola ore ordinarie, straordinari, notturni e festivi e stima lo stipendio lordo e netto del mese. Rotazioni automatiche, turni flessibili e sincronizzazione gratuita fra dispositivi.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR",
+    "description": "Download gratuito. Funzioni Premium facoltative con abbonamento o acquisto unico."
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Matteo De Min"
+  }
+}
+</script>
 
 </body>
 </html>
