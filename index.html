@@ -120,6 +120,16 @@
   .piano li{padding-left:27px;position:relative;color:var(--grigio);}
   .piano li::before{content:"";position:absolute;left:2px;top:.42em;width:13px;height:7px;border-left:2.5px solid var(--verde);border-bottom:2.5px solid var(--verde);transform:rotate(-45deg);}
   .piano .nota{margin-top:18px;padding-top:16px;border-top:1px solid var(--bordo);font-size:.9rem;color:var(--grigio);}
+  /* Listino: annulla la spunta e il rientro ereditati da `.piano li` */
+  .piano .prezzi-lista{list-style:none;margin:18px 0 0;padding:0;display:block;border:1px solid var(--bordo);border-radius:14px;overflow:hidden;}
+  .piano .prezzi-lista li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--bordo);color:var(--testo);}
+  .piano .prezzi-lista li:last-child{border-bottom:0;}
+  .piano .prezzi-lista li::before{content:none;}
+  .piano .prezzi-lista .n{display:flex;flex-direction:column;gap:1px;font-weight:700;}
+  .piano .prezzi-lista .n small{color:var(--grigio);font-size:.8rem;font-weight:500;}
+  .piano .prezzi-lista .p{font-weight:800;font-size:1.12rem;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  .piano .prezzi-lista .p small{font-weight:600;color:var(--grigio);font-size:.78rem;}
+  .piano .prezzi-lista .best{background:var(--verde-chiaro);}
 </style>
 </head>
 <body>
@@ -250,7 +260,21 @@
             <li>Esportazione del report mensile in PDF</li>
             <li>Esportazione dei turni sul calendario di sistema, Google o Outlook</li>
           </ul>
-          <p class="nota">Mensile, annuale con 7 giorni di prova gratuita, oppure un acquisto unico a vita. Il prezzo esatto è mostrato nell'app al momento dell'acquisto, e l'abbonamento si disdice quando vuoi dalle impostazioni dell'iPhone.</p>
+          <ul class="prezzi-lista">
+            <li>
+              <span class="n">Mensile</span>
+              <span class="p">2,49 <small>€/mese</small></span>
+            </li>
+            <li class="best">
+              <span class="n">Annuale<small>7 giorni di prova gratuita</small></span>
+              <span class="p">9,99 <small>€/anno</small></span>
+            </li>
+            <li>
+              <span class="n">A vita<small>un pagamento, nessun rinnovo</small></span>
+              <span class="p">34,99 <small>€</small></span>
+            </li>
+          </ul>
+          <p class="nota">Prezzi per l'Italia, IVA inclusa. Il valore vincolante resta quello mostrato nella schermata di acquisto dell'app. L'abbonamento si disdice quando vuoi dalle impostazioni dell'iPhone; l'acquisto a vita non si rinnova.</p>
         </div>
       </div>
     </div>
