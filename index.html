@@ -2,6 +2,27 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
+<script>
+/* Chi arriva qui dal link di un'email di ShiftPro (reimposta la password,
+   conferma l'account) non vuole la home: vuole reimposta.html.
+
+   Ci arriva perche' l'app non passa un `redirect_to` quando chiede il reset,
+   quindi Supabase rimanda per forza al Site URL del progetto — che e' questa
+   home. Lo smistamento lo facciamo qui.
+
+   Sta in cima al <head>, prima di qualunque cosa da disegnare: cosi' chi
+   dev'essere mandato altrove parte subito, senza vedere mezza pagina
+   comparire e sparire. `replace` e non `href`: la home non deve restare
+   nella cronologia, o il tasto indietro riporta qui e si rimbalza.
+
+   Sulla stragrande maggioranza delle visite questo `if` e' falso. */
+(function () {
+  var coda = (window.location.hash || "") + (window.location.search || "");
+  if (/[#?&](access_token|token_hash|error_code)=/.test(coda) || /[#?&]type=(recovery|signup|email_change)/.test(coda)) {
+    window.location.replace("reimposta.html" + window.location.search + window.location.hash);
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ShiftPro · Turni di lavoro, ore, straordinari e stipendio</title>
 <meta name="description" content="ShiftPro è il calendario turni per iPhone che ti dice anche quanto ti frutta il mese: ore ordinarie, straordinari, notturni e festivi, con stima di stipendio lordo e netto. Per infermieri, OSS, operai, autisti e chi lavora su turni.">
