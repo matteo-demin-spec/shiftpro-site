@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -190,7 +190,217 @@
   .piano .prezzi-lista .p{font-weight:800;font-size:1.12rem;white-space:nowrap;font-variant-numeric:tabular-nums;}
   .piano .prezzi-lista .p small{font-weight:600;color:var(--grigio);font-size:.78rem;}
   .piano .prezzi-lista .best{background:var(--verde-chiaro);}
+
+  /* ------------------------------------------------------------------
+     HERO CINEMATOGRAFICO
+     Portato a mano dal componente React di 21st.dev (@jahed,
+     cinematic-landing-hero) verso HTML e CSS normali. Il componente
+     originale vuole React, Tailwind e shadcn: qui non c'e' niente da
+     compilare, perche' GitHub Pages serve i file come sono e le pagine
+     legali (privacy, termini, assistenza, reimposta) devono continuare a
+     rispondere agli stessi indirizzi che stanno su App Store Connect.
+
+     Tre regole che il porting rispetta:
+     - senza JavaScript, o se il CDN di GSAP non risponde, la pagina resta
+       leggibile e completa: l'animazione si accende solo dopo che GSAP
+       ha risposto davvero (classe `cinema` sulla radice);
+     - `prefers-reduced-motion` spegne tutto e lascia la composizione ferma;
+     - l'H1 vero resta nel documento, con il testo vero: niente titolo
+       finto per i motori di ricerca.
+     ------------------------------------------------------------------ */
+
+  .cinema-palco{position:relative;width:100%;height:100svh;min-height:560px;
+    overflow:hidden;display:flex;align-items:center;justify-content:center;
+    perspective:1500px;background:var(--sfondo);}
+
+  /* La grana della pellicola e la griglia: due veli, nessuno dei due
+     intercetta i clic. */
+  .cinema-grana{position:absolute;inset:0;z-index:50;pointer-events:none;
+    opacity:.05;mix-blend-mode:overlay;
+    background:url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23g)"/></svg>');}
+  .cinema-griglia{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-size:60px 60px;
+    background-image:linear-gradient(to right,rgba(27,30,38,.05) 1px,transparent 1px),
+                     linear-gradient(to bottom,rgba(27,30,38,.05) 1px,transparent 1px);
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%);
+    mask-image:radial-gradient(ellipse at center,#000 0%,transparent 70%);}
+
+  .cinema-testo{position:absolute;z-index:10;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;width:100%;
+    padding:0 20px;transform-style:preserve-3d;}
+  .cinema-testo .eyebrow{margin-bottom:14px;}
+  .cinema-testo h1{font-size:clamp(2.1rem,5.4vw,4.2rem);font-weight:800;
+    letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance;}
+  .cinema-riga1{color:var(--testo);
+    text-shadow:0 10px 30px rgba(27,30,38,.16),0 2px 4px rgba(27,30,38,.08);}
+  .cinema-riga2{display:block;margin-top:.12em;
+    background:linear-gradient(180deg,var(--verde) 0%,var(--verde-scuro) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    transform:translateZ(0);
+    filter:drop-shadow(0 10px 20px rgba(29,158,117,.22));}
+  .cinema-testo .lead{color:var(--grigio);font-size:1.06rem;max-width:54ch;
+    margin:22px auto 0;}
+
+  /* La chiamata all'azione: compare in coda, quando la scheda si ritira. */
+  .cinema-finale{position:absolute;z-index:10;width:100%;padding:0 20px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    opacity:0;pointer-events:none;}
+  .cinema-finale.viva{pointer-events:auto;}
+  .cinema-finale h2{font-size:clamp(1.9rem,4.4vw,3.2rem);font-weight:800;
+    letter-spacing:-.02em;margin:0 0 14px;
+    background:linear-gradient(180deg,var(--verde) 0%,var(--verde-scuro) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .cinema-finale p{color:var(--grigio);font-size:1.06rem;max-width:46ch;margin:0 0 30px;}
+
+  /* LA SCHEDA FISICA. Nell'originale e' blu notte; qui e' il verde di
+     ShiftPro portato al buio, perche' la scheda deve essere di questa app
+     e non di quella da cui arriva il componente. */
+  .cinema-scena{position:absolute;inset:0;z-index:20;display:flex;
+    align-items:center;justify-content:center;pointer-events:none;perspective:1500px;}
+  .cinema-scheda{position:relative;width:92vw;height:88svh;border-radius:32px;
+    overflow:hidden;display:flex;align-items:center;justify-content:center;
+    pointer-events:auto;
+    background:linear-gradient(145deg,#0E3B2C 0%,#070D14 100%);
+    border:1px solid rgba(255,255,255,.05);
+    box-shadow:0 40px 100px -20px rgba(0,0,0,.85),0 20px 40px -20px rgba(0,0,0,.7),
+      inset 0 1px 2px rgba(255,255,255,.16),inset 0 -2px 4px rgba(0,0,0,.7);}
+  @media(min-width:768px){.cinema-scheda{width:86vw;height:84svh;border-radius:40px;}}
+
+  /* Il riflesso che segue il mouse. */
+  .cinema-riflesso{position:absolute;inset:0;border-radius:inherit;z-index:50;
+    pointer-events:none;mix-blend-mode:screen;
+    background:radial-gradient(700px circle at var(--mx,50%) var(--my,50%),
+      rgba(255,255,255,.07) 0%,transparent 42%);}
+
+  .cinema-griglia-scheda{position:relative;z-index:10;width:100%;height:100%;
+    max-width:1180px;margin:0 auto;padding:22px 16px;display:flex;
+    flex-direction:column;justify-content:space-evenly;align-items:center;gap:10px;}
+  @media(min-width:1024px){
+    .cinema-griglia-scheda{display:grid;grid-template-columns:1fr 1.1fr 1fr;
+      align-items:center;gap:26px;padding:0 42px;}
+  }
+
+  .cinema-marchio{order:1;display:flex;justify-content:center;width:100%;}
+  .cinema-marchio b{font-size:clamp(2.6rem,8vw,6.4rem);font-weight:800;
+    text-transform:uppercase;letter-spacing:-.045em;line-height:1;
+    background:linear-gradient(180deg,#FFFFFF 0%,#8FB9A9 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    transform:translateZ(0);
+    filter:drop-shadow(0 12px 24px rgba(0,0,0,.75));}
+  @media(min-width:1024px){.cinema-marchio{order:3;justify-content:flex-end;}}
+
+  .cinema-detto{order:3;width:100%;text-align:center;padding:0 6px;}
+  .cinema-detto h2{color:#fff;font-size:clamp(1.15rem,2.6vw,1.9rem);font-weight:700;
+    letter-spacing:-.01em;margin:0;}
+  .cinema-detto p{display:none;color:rgba(214,240,230,.72);font-size:1rem;
+    line-height:1.6;margin:14px 0 0;}
+  @media(min-width:1024px){
+    .cinema-detto{order:1;text-align:left;}
+    .cinema-detto p{display:block;max-width:34ch;}
+  }
+
+  /* IL TELEFONO. Stessa scocca dell'originale, schermo rifatto: qui dentro
+     ci sta un mese di turni, non un anello di giorni. */
+  .cinema-telefono{order:2;position:relative;width:100%;height:300px;
+    display:flex;align-items:center;justify-content:center;z-index:10;perspective:1000px;}
+  @media(min-width:1024px){.cinema-telefono{height:580px;}}
+  .cinema-telefono-scala{position:relative;display:flex;align-items:center;
+    justify-content:center;transform:scale(.52);}
+  @media(min-width:768px){.cinema-telefono-scala{transform:scale(.72);}}
+  @media(min-width:1024px){.cinema-telefono-scala{transform:none;}}
+
+  .cinema-scocca{position:relative;width:280px;height:592px;border-radius:3rem;
+    background:#111;transform-style:preserve-3d;
+    box-shadow:inset 0 0 0 2px #4d5a55,inset 0 0 0 7px #000,
+      0 40px 80px -15px rgba(0,0,0,.9),0 15px 25px -5px rgba(0,0,0,.7);}
+  .cinema-tasto{position:absolute;z-index:0;
+    background:linear-gradient(90deg,#3c3c3c 0%,#171717 100%);
+    box-shadow:-2px 0 5px rgba(0,0,0,.8),inset -1px 0 1px rgba(255,255,255,.15);}
+  .cinema-schermo{position:absolute;inset:7px;border-radius:2.5rem;overflow:hidden;
+    background:#050C0A;color:#fff;z-index:10;
+    box-shadow:inset 0 0 15px rgba(0,0,0,1);}
+  .cinema-vetro{position:absolute;inset:0;z-index:40;pointer-events:none;
+    background:linear-gradient(110deg,rgba(255,255,255,.08) 0%,rgba(255,255,255,0) 45%);}
+  .cinema-isola{position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:100px;height:28px;border-radius:999px;background:#000;z-index:50;
+    display:flex;align-items:center;justify-content:flex-end;padding-right:12px;}
+  .cinema-isola i{width:6px;height:6px;border-radius:50%;background:var(--verde);
+    box-shadow:0 0 8px rgba(29,158,117,.9);}
+
+  .cinema-scatto{display:block;width:100%;height:100%;object-fit:cover;
+    object-position:top center;}
+
+
+
+
+
+  /* Le due targhette di vetro che galleggiano ai lati. */
+  .cinema-targa{position:absolute;z-index:30;display:flex;align-items:center;gap:12px;
+    border-radius:16px;padding:12px 14px;
+    background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.015) 100%);
+    -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+    box-shadow:0 0 0 1px rgba(255,255,255,.1),0 25px 50px -12px rgba(0,0,0,.8),
+      inset 0 1px 1px rgba(255,255,255,.2);}
+  .cinema-targa b{display:block;color:#fff;font-size:13px;font-weight:700;letter-spacing:-.01em;}
+  .cinema-targa small{color:rgba(180,225,205,.6);font-size:11px;font-weight:500;}
+  .cinema-targa i{width:36px;height:36px;border-radius:50%;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(255,255,255,.18);}
+  .cinema-targa i svg{width:17px;height:17px;fill:none;stroke-width:2.2;
+    stroke-linecap:round;stroke-linejoin:round;}
+  .cinema-targa-alta{top:10px;left:-14px;}
+  .cinema-targa-bassa{bottom:28px;right:-14px;}
+  @media(min-width:1024px){
+    .cinema-targa-alta{top:46px;left:-86px;}
+    .cinema-targa-bassa{bottom:74px;right:-86px;}
+  }
+
+  /* Lo stato di partenza lo mette il JavaScript, mai il foglio di stile:
+     se GSAP non arriva, qui non c'e' niente di nascosto da riaccendere. */
+  html.cinema .cinema-nascondi{visibility:hidden;}
+
+  /* IL RIPIEGO STATICO. Vale quando l'animazione non c'e': GSAP non e'
+     arrivato, il ticker e' fermo, o il sistema ha chiesto meno movimento.
+     Non basta "smettere di nascondere": finche' testo e scena restano
+     sovrapposti, la scheda copre il titolo e l'H1 sparisce. Qui la pagina
+     torna quello che e' — prima il titolo, poi la scheda — e si legge tutta.
+     Il modo animato e' l'eccezione (`html.cinema`), non il contrario. */
+  html:not(.cinema) .cinema-palco{height:auto;min-height:0;display:block;
+    padding:56px 0 64px;overflow:visible;}
+  html:not(.cinema) .cinema-testo{position:relative;}
+  html:not(.cinema) .cinema-scena{position:relative;inset:auto;margin-top:46px;padding:0 16px;}
+  html:not(.cinema) .cinema-scheda{width:min(1080px,100%);height:auto;padding:34px 0;}
+  html:not(.cinema) .cinema-griglia-scheda{height:auto;}
+  html:not(.cinema) .cinema-telefono{height:auto;padding:18px 0;}
+  html:not(.cinema) .cinema-riflesso,
+  html:not(.cinema) .cinema-finale{display:none;}
+
+  @media(prefers-reduced-motion:reduce){
+    html.cinema .cinema-nascondi{visibility:visible;}
+  }
 </style>
+<script>
+/* L'hero cinematografico parte nascosto, ma solo se ha davvero una
+   possibilita' di accendersi. Mettere la classe qui, prima che il browser
+   disegni, evita il lampo di contenuto che comparirebbe e sparirebbe.
+
+   La rete di sicurezza e' il timeout: se GSAP non arriva — CDN irraggiungibile,
+   blocco degli script, connessione morta a meta' — dopo due secondi e mezzo la
+   classe se ne va e la pagina si vede lo stesso, ferma. Nessun visitatore deve
+   restare davanti a uno schermo vuoto perche' un file esterno non ha risposto.
+
+   Chi ha chiesto meno animazioni al sistema non entra proprio qui dentro. */
+(function () {
+  try {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var r = document.documentElement;
+    r.classList.add("cinema");
+    setTimeout(function () {
+      if (!window.__cinemaPronto) r.classList.remove("cinema");
+    }, 2500);
+  } catch (e) { /* qualunque cosa vada storta, la pagina resta visibile */ }
+})();
+</script>
 </head>
 <body>
 
@@ -209,21 +419,77 @@
 
 <main id="top">
 
-  <div class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow">Calendario turni per iPhone</span>
-        <h1>Sai che turno fai.<br><span class="verde">Ma sai quanto ti frutta?</span></h1>
-        <p class="lead">ShiftPro mette in ordine turni e rotazioni come ogni buon calendario — e in più conta ore ordinarie, straordinari, notturni e festivi, con la stima dello stipendio lordo e netto del mese. Prima che arrivi la busta paga.</p>
-        <div class="cta-row">
-          <a class="badge-store" href="https://apps.apple.com/it/app/shiftpro-gestione-turni/id6804266189">
-            <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.5 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.6zM256.6 93c31-36.8 28.2-70.3 27.3-82.4-27.4 1.6-59.1 18.7-77.2 39.7-19.9 22.6-31.6 50.5-29.1 81.9 29.6 2.3 56.7-12.9 79-39.2z"/></svg>
-            <span><small>Scarica su</small><b>App Store</b></span>
-          </a>
-          <a class="btn btn-ghost" href="#funzioni">Scopri come funziona</a>
+  <div class="cinema-palco" id="cinema">
+    <div class="cinema-grana" aria-hidden="true"></div>
+    <div class="cinema-griglia" aria-hidden="true"></div>
+
+    <div class="cinema-testo" id="cinema-testo">
+      <span class="eyebrow cinema-nascondi cinema-t1">Calendario turni per iPhone</span>
+      <h1>
+        <span class="cinema-riga1 cinema-nascondi cinema-t1">Sai che turno fai.</span>
+        <span class="cinema-riga2 cinema-nascondi cinema-t2">Ma sai quanto ti frutta?</span>
+      </h1>
+      <p class="lead cinema-nascondi cinema-t1">ShiftPro mette in ordine turni e rotazioni come ogni buon calendario — e in più conta ore ordinarie, straordinari, notturni e festivi, con la stima dello stipendio lordo e netto del mese. Prima che arrivi la busta paga.</p>
+    </div>
+
+    <div class="cinema-finale" id="cinema-finale">
+      <h2>Il mese, prima della busta paga.</h2>
+      <p>Gratis, in italiano, e funziona anche senza account. Il Premium serve solo se lo vuoi.</p>
+      <a class="badge-store" href="https://apps.apple.com/it/app/shiftpro-gestione-turni/id6804266189">
+        <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M318.7 268c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C61.5 141.2 0 184.8 0 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.6zM256.6 93c31-36.8 28.2-70.3 27.3-82.4-27.4 1.6-59.1 18.7-77.2 39.7-19.9 22.6-31.6 50.5-29.1 81.9 29.6 2.3 56.7-12.9 79-39.2z"/></svg>
+        <span><small>Scarica su</small><b>App Store</b></span>
+      </a>
+    </div>
+
+    <div class="cinema-scena" aria-hidden="false">
+      <div class="cinema-scheda cinema-nascondi" id="cinema-scheda">
+        <div class="cinema-riflesso" aria-hidden="true"></div>
+
+        <div class="cinema-griglia-scheda">
+
+          <div class="cinema-marchio cinema-nascondi" id="cinema-marchio"><b>ShiftPro</b></div>
+
+          <div class="cinema-telefono" id="cinema-telefono">
+            <div class="cinema-telefono-scala">
+              <div class="cinema-scocca" id="cinema-scocca">
+                <span class="cinema-tasto" style="top:118px;left:-3px;width:3px;height:24px;border-radius:3px 0 0 3px;" aria-hidden="true"></span>
+                <span class="cinema-tasto" style="top:158px;left:-3px;width:3px;height:44px;border-radius:3px 0 0 3px;" aria-hidden="true"></span>
+                <span class="cinema-tasto" style="top:216px;left:-3px;width:3px;height:44px;border-radius:3px 0 0 3px;" aria-hidden="true"></span>
+                <span class="cinema-tasto" style="top:168px;right:-3px;width:3px;height:68px;border-radius:0 3px 3px 0;" aria-hidden="true"></span>
+
+                <div class="cinema-schermo">
+                  <div class="cinema-vetro" aria-hidden="true"></div>
+                  <div class="cinema-isola" aria-hidden="true"><i></i></div>
+
+                  <img class="cinema-scatto" src="app-calendario.jpg"
+                       width="640" height="1392" loading="eager" decoding="async"
+                       alt="ShiftPro: il calendario di settembre con i turni gia' compilati, l'orario di oggi e le ore del mese">
+                </div>
+              </div>
+
+              <div class="cinema-targa cinema-targa-alta cinema-nascondi">
+                <i style="background:linear-gradient(180deg,rgba(55,138,221,.24),rgba(55,138,221,.06));">
+                  <svg viewBox="0 0 24 24" stroke="#8FC4F2" aria-hidden="true"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+                </i>
+                <div><b>+12 h di straordinario</b><small>contate da sole</small></div>
+              </div>
+
+              <div class="cinema-targa cinema-targa-bassa cinema-nascondi">
+                <i style="background:linear-gradient(180deg,rgba(29,158,117,.24),rgba(29,158,117,.06));">
+                  <svg viewBox="0 0 24 24" stroke="#7FD9BA" aria-hidden="true"><path d="M4 17l6-6 4 4 6-7"/><path d="M20 8v5h-5"/></svg>
+                </i>
+                <div><b>Stipendio stimato</b><small>lordo e netto del mese</small></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cinema-detto cinema-nascondi" id="cinema-detto">
+            <h2>I conti li fa lui.</h2>
+            <p>Imposti la rotazione una volta e il calendario si riempie da solo. Ordinarie, straordinari, notturni e festivi finiscono al posto giusto, con la stima del lordo e del netto sotto.</p>
+          </div>
+
         </div>
       </div>
-      <div class="hero-shot"><img src="screen-01.jpg" alt="ShiftPro — schermata Calendario" loading="eager"></div>
     </div>
   </div>
 
@@ -431,5 +697,142 @@
 }
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* La regia dell'hero. Tradotta dal componente React di 21st.dev, con tre
+   differenze volute:
+
+   - il blocco della pagina dura 3200px invece di 7000: sotto l'hero c'e' un
+     sito vero, con funzioni, prezzi e domande, e farcisi scorrere sette
+     schermate prima di arrivarci sarebbe una tassa, non un effetto;
+   - niente stato iniziale nel foglio di stile: se questo file non parte, la
+     pagina resta comunque leggibile (vedi lo script in cima al documento);
+   - il conto delle ore sale fino a un numero vero, non a un segnaposto. */
+(function () {
+  if (!window.gsap || !window.ScrollTrigger) return;
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var palco = document.getElementById("cinema");
+  if (!palco) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+  window.__cinemaPronto = true;
+
+  var scheda   = document.getElementById("cinema-scheda");
+  var telefono = document.getElementById("cinema-scocca");
+  var finale   = document.getElementById("cinema-finale");
+  var scatto   = document.querySelector(".cinema-scatto");
+
+  /* Da qui in avanti gli elementi li muove GSAP, quindi la classe che li
+     teneva nascosti non serve piu': toglierla adesso evita che `visibility`
+     litighi con `autoAlpha`. */
+  gsap.utils.toArray(".cinema-nascondi").forEach(function (el) {
+    el.classList.remove("cinema-nascondi");
+  });
+  gsap.set([".cinema-t1", ".cinema-t2", "#cinema-scheda", "#cinema-marchio",
+            "#cinema-detto", ".cinema-targa"], { autoAlpha: 0 });
+
+  /* 1. L'ingresso: il titolo arriva a fuoco, la seconda riga si scopre. */
+  gsap.set(".cinema-t1", { y: 50, scale: .9, filter: "blur(18px)" });
+  gsap.set(".cinema-t2", { clipPath: "inset(0 100% 0 0)", autoAlpha: 1 });
+
+  gsap.timeline({ delay: .25 })
+    .to(".cinema-t1", { duration: 1.5, autoAlpha: 1, y: 0, scale: 1,
+                        filter: "blur(0px)", ease: "expo.out", stagger: .08 })
+    .to(".cinema-t2", { duration: 1.2, clipPath: "inset(0 0% 0 0)",
+                        ease: "power4.inOut" }, "-=.9");
+
+  /* 2. Il mouse: il riflesso sulla scheda e l'inclinazione del telefono.
+     Una sola richiesta di disegno per movimento, altrimenti su un portatile
+     si sente. */
+  var richiesta = 0;
+  window.addEventListener("mousemove", function (e) {
+    if (window.scrollY > window.innerHeight * 2) return;
+    cancelAnimationFrame(richiesta);
+    richiesta = requestAnimationFrame(function () {
+      if (!scheda || !telefono) return;
+      var r = scheda.getBoundingClientRect();
+      scheda.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      scheda.style.setProperty("--my", (e.clientY - r.top) + "px");
+      gsap.to(telefono, {
+        rotationY: (e.clientX / window.innerWidth - .5) * 20,
+        rotationX: -(e.clientY / window.innerHeight - .5) * 20,
+        ease: "power3.out", duration: 1.1
+      });
+    });
+  }, { passive: true });
+
+  /* 3. Lo scorrimento: la scheda sale, si apre, mostra il telefono, poi si
+     ritira e lascia il posto alla chiamata all'azione. */
+  var stretto = window.innerWidth < 768;
+
+  gsap.set(scheda, { yPercent: 120, autoAlpha: 1 });
+
+  gsap.timeline({
+    scrollTrigger: {
+      trigger: palco, start: "top top", end: "+=3200",
+      pin: true, scrub: 1, anticipatePin: 1, invalidateOnRefresh: true
+    }
+  })
+    .to("#cinema-testo", { scale: 1.1, filter: "blur(14px)", autoAlpha: .18,
+                           ease: "power2.inOut", duration: 2 }, 0)
+    .to(scheda, { yPercent: 0, ease: "power3.inOut", duration: 2 }, 0)
+    .to(scheda, { width: "100%", height: "100%", borderRadius: 0,
+                  ease: "power3.inOut", duration: 1.4 })
+    .fromTo("#cinema-telefono",
+      { y: 220, rotationX: 42, autoAlpha: 0, scale: .7 },
+      { y: 0, rotationX: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.2 }, "-=.7")
+    .fromTo(scatto, { autoAlpha: 0, scale: 1.06 },
+      { autoAlpha: 1, scale: 1, ease: "power2.out", duration: 1.4 }, "-=1.5")
+    .fromTo(".cinema-targa", { y: 80, autoAlpha: 0, scale: .75 },
+      { y: 0, autoAlpha: 1, scale: 1, ease: "back.out(1.4)", duration: 1.3, stagger: .16 }, "-=1.6")
+    .fromTo("#cinema-detto", { x: -40, autoAlpha: 0 },
+      { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.3 }, "-=1.2")
+    .fromTo("#cinema-marchio", { x: 40, autoAlpha: 0, scale: .85 },
+      { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.3 }, "<")
+    .to({}, { duration: 2.2 })
+    .set("#cinema-testo", { autoAlpha: 0 })
+    .set(finale, { autoAlpha: 1, scale: .85, filter: "blur(24px)",
+                   onComplete: function () { finale.classList.add("viva"); },
+                   onReverseComplete: function () { finale.classList.remove("viva"); } })
+    .to([".cinema-targa", "#cinema-telefono", "#cinema-detto", "#cinema-marchio"],
+        { autoAlpha: 0, y: -30, scale: .92, ease: "power3.in", duration: 1, stagger: .04 })
+    .to(scheda, { width: stretto ? "92vw" : "86vw", height: stretto ? "88svh" : "84svh",
+                  borderRadius: stretto ? 32 : 40, ease: "expo.inOut", duration: 1.6 }, "ritiro")
+    .to(finale, { scale: 1, filter: "blur(0px)", ease: "expo.inOut", duration: 1.6 }, "ritiro")
+    .to(scheda, { yPercent: -130, ease: "power3.in", duration: 1.3 });
+
+  /* Il blocco della pagina va rimisurato quando il layout e' davvero finito.
+     Senza questo, ScrollTrigger costruisce il suo contenitore mentre font e
+     immagini stanno ancora arrivando, si porta dietro una larghezza di zero e
+     l'hero resta invisibile: succedeva davvero, misurato in anteprima
+     (pin-spacer largo 0 su una pagina larga 1265). */
+  window.addEventListener("load", function () { ScrollTrigger.refresh(); });
+
+  /* SECONDA RETE DI SICUREZZA, e non e' un di piu'.
+     La prima (lo script in cima al documento) copre il caso "GSAP non
+     arriva". Questa copre il caso peggiore: GSAP arriva, questo codice
+     parte, nasconde gli elementi con `autoAlpha: 0` — e poi il ticker non
+     gira mai, perche' il browser ha congelato requestAnimationFrame. Capita
+     in una scheda aperta in secondo piano, e capita per davvero: misurato
+     qui, ticker fermo a 0.00 con la pagina visibile.
+     Senza questo controllo l'hero resterebbe bianco per sempre. */
+  setTimeout(function () {
+    if (gsap.globalTimeline.time() > 0) return;
+    gsap.set([".cinema-t1", ".cinema-t2", "#cinema-scheda", "#cinema-marchio",
+              "#cinema-detto", ".cinema-targa", "#cinema-telefono", ".cinema-scatto"],
+             { clearProps: "all" });
+    /* Il blocco della pagina va smontato, non solo ignorato: il contenitore
+       che ScrollTrigger si crea vale 3200px di altezza, e senza di lui
+       resterebbe una voragine bianca fra la scheda e la sezione sotto. */
+    ScrollTrigger.getAll().forEach(function (st) { st.kill(true); });
+    document.documentElement.classList.remove("cinema");
+  }, 1400);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { ScrollTrigger.refresh(); });
+  }
+})();
+</script>
 </body>
 </html>
