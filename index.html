@@ -102,11 +102,11 @@
   .strip{display:flex;gap:18px;overflow-x:auto;padding:14px 22px 26px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
   .strip::-webkit-scrollbar{height:8px;}
   .strip::-webkit-scrollbar-thumb{background:#d4d8e2;border-radius:99px;}
-  .strip img{height:400px;width:auto;border-radius:20px;box-shadow:0 10px 28px rgba(20,30,60,.12);scroll-snap-align:center;flex:0 0 auto;}
+  .strip img,
+  .strip video{height:400px;width:auto;border-radius:20px;box-shadow:0 10px 28px rgba(20,30,60,.12);scroll-snap-align:center;flex:0 0 auto;}
+  .strip video{aspect-ratio:9/16;background:#fff;}
 
   section{padding:70px 0;}
-  .video-cornice{max-width:300px;margin:0 auto;}
-  .video-cornice video{width:100%;aspect-ratio:9/16;display:block;border-radius:22px;background:#000;}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 14px;}
   .sec-head .eyebrow{margin-bottom:14px;}
   .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:800;}
@@ -419,7 +419,9 @@
 
   <div class="strip-sec">
     <div class="strip">
-      <img src="screen-01.jpg" alt="Calendario" loading="lazy">
+      <video class="strip-video" data-src="shiftpro-web.mp4" poster="shiftpro-web-poster.jpg"
+           preload="none" muted loop playsinline
+           aria-label="ShiftPro in venticinque secondi: il calendario dei turni, la rotazione automatica, le ore e la stima dello stipendio."></video>
       <img src="screen-02.jpg" alt="Il tuo calendario lavorativo" loading="lazy">
       <img src="screen-03.jpg" alt="Turni" loading="lazy">
       <img src="screen-04.jpg" alt="Rotazione" loading="lazy">
@@ -431,25 +433,6 @@
       <img src="screen-10.jpg" alt="ShiftPro" loading="lazy">
     </div>
   </div>
-
-  <section id="video">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">In movimento</span>
-        <h2>Venticinque secondi</h2>
-        <p>Il mese, la rotazione, gli straordinari e la stima dello stipendio. Senza audio.</p>
-      </div>
-      <div class="video-cornice">
-        <video poster="shiftpro-web-poster.jpg" preload="metadata"
-               muted loop playsinline autoplay controls
-               aria-label="ShiftPro in uso: calendario dei turni, rotazione automatica, ore e stima dello stipendio">
-          <source src="shiftpro-web.mp4" type="video/mp4">
-          Il tuo browser non riproduce i video.
-          <a href="shiftpro-web.mp4">Scarica il filmato</a>.
-        </video>
-      </div>
-    </div>
-  </section>
 
   <section id="funzioni">
     <div class="wrap">
@@ -640,13 +623,22 @@
 
 <script>
 (function () {
-  var meno = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
-  if (!meno || !meno.matches) return;
-  var v = document.querySelector("#video video");
+  var v = document.querySelector(".strip-video");
   if (!v) return;
-  v.autoplay = false;
-  v.loop = false;
-  v.pause();
+  var fermo = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var carica = function () {
+    if (v.src) return;
+    v.src = v.dataset.src;
+  };
+  if (fermo) { v.setAttribute("controls", ""); carica(); return; }
+  if (!("IntersectionObserver" in window)) { carica(); v.play().catch(function () {}); return; }
+  var occhio = new IntersectionObserver(function (voci) {
+    voci.forEach(function (voce) {
+      if (voce.isIntersecting) { carica(); v.play().catch(function () {}); }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.4 });
+  occhio.observe(v);
 })();
 </script>
 <script src="/js/gsap.min.js"></script>
