@@ -3,19 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <script>
-/* Chi arriva qui dal link di un'email di ShiftPro (reimposta la password,
-   conferma l'account) non vuole la home: vuole reimposta.html.
-
-   Ci arriva perche' l'app non passa un `redirect_to` quando chiede il reset,
-   quindi Supabase rimanda per forza al Site URL del progetto — che e' questa
-   home. Lo smistamento lo facciamo qui.
-
-   Sta in cima al <head>, prima di qualunque cosa da disegnare: cosi' chi
-   dev'essere mandato altrove parte subito, senza vedere mezza pagina
-   comparire e sparire. `replace` e non `href`: la home non deve restare
-   nella cronologia, o il tasto indietro riporta qui e si rimbalza.
-
-   Sulla stragrande maggioranza delle visite questo `if` e' falso. */
 (function () {
   var coda = (window.location.hash || "") + (window.location.search || "");
   if (/[#?&](access_token|token_hash|error_code)=/.test(coda) || /[#?&]type=(recovery|signup|email_change)/.test(coda)) {
@@ -42,10 +29,6 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <style>
-  /* Font serviti da questo sito, non da Google: caricarli da fonts.googleapis.com
-     manderebbe l'IP di ogni visitatore ai server di Google, che sotto GDPR e' un
-     dato personale ceduto a un terzo senza base giuridica ne' consenso. Cosi' il
-     sito non fa nessuna richiesta esterna. */
   @font-face{
     font-family:"Plus Jakarta Sans";
     font-style:normal;
@@ -67,17 +50,12 @@
     --blu:#378ADD; --scuro:#12141f; --testo:#1b1e26; --grigio:#5c6070;
     --bordo:#e8eaf0; --sfondo:#ffffff; --sfondo2:#f6f8fb;
     --raggio:20px; --ombra:0 18px 50px rgba(20,30,60,.10);
-    /* Movimento: una durata sola per le risposte al passaggio del mouse
-       e la curva che le accompagna. Tenerle qui evita che fra sei mesi
-       ogni pulsante abbia il suo tempo. */
     --tempo-tocco:150ms; --curva:cubic-bezier(.22,1,.36,1);
     --font:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;}
   a:focus-visible,button:focus-visible{outline:2px solid var(--verde);outline-offset:3px;border-radius:6px;}
   html{scroll-behavior:smooth;overflow-x:clip;}
-  /* Chi ha chiesto al sistema meno animazioni non vuole nemmeno la
-     pagina che scorre da sola: per qualcuno e' nausea, non eleganza. */
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto;}
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
@@ -97,9 +75,6 @@
   .nav-links a{color:var(--grigio);font-weight:600;font-size:.95rem;}
   .nav-links a:hover{color:var(--testo);}
   .btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;border-radius:12px;padding:12px 20px;font-size:.95rem;border:0;cursor:pointer;transition:transform var(--tempo-tocco) var(--curva),background var(--tempo-tocco) var(--curva);}
-  /* Fondo --verde-scuro e non --verde: bianco su #1D9E75 da' 3,39:1, sotto il
-     4,5:1 che WCAG chiede a un testo di 15px grassetto. #15794f da' 5,41:1.
-     E' il pulsante "Scarica su App Store", cioe' quello che conta. */
   .btn-primary{background:var(--verde-scuro);color:#fff;box-shadow:0 8px 20px rgba(21,121,79,.30);}
   .btn-primary:hover{background:#0f5c3b;transform:translateY(-1px);}
   .btn-ghost{background:var(--sfondo2);color:var(--testo);border:1px solid var(--bordo);}
@@ -116,14 +91,6 @@
   .hero h1{font-size:clamp(2.3rem,4.6vw,3.5rem);font-weight:800;}
   .hero p.lead{color:var(--grigio);font-size:1.16rem;max-width:520px;margin:20px 0 30px;}
   .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
-  /* Il badge dell'App Store e' artwork di Apple e si usa come lo danno loro.
-     Le Marketing Guidelines dicono "Use only the badge artwork provided in
-     these guidelines" e "Don't modify, angle, or animate the App Store
-     badge": qui non c'e' fondo, non c'e' bordo, non c'e' testo nostro e non
-     c'e' transizione al passaggio del mouse. Il bordo grigio che si vede fa
-     parte del disegno di Apple, non e' nostro.
-     48px di altezza: il minimo a schermo e' 40, e lo spazio libero attorno
-     deve valere un quarto dell'altezza, cioe' 12px. */
   .badge-store{display:inline-block;line-height:0;margin:12px;}
   .badge-store img{height:48px;width:auto;aspect-ratio:119.66407 / 40;display:block;}
   .hero-shot{position:relative;justify-self:center;}
@@ -138,10 +105,6 @@
   .strip img{height:400px;width:auto;border-radius:20px;box-shadow:0 10px 28px rgba(20,30,60,.12);scroll-snap-align:center;flex:0 0 auto;}
 
   section{padding:70px 0;}
-  /* Il video e' verticale come il telefono che mostra: largo 300 sta comodo
-     su un portatile e occupa quasi tutta la larghezza su un telefono.
-     `aspect-ratio` tiene lo spazio prima che il file arrivi, cosi' il resto
-     della pagina non salta mentre carica. */
   .video-cornice{max-width:300px;margin:0 auto;}
   .video-cornice video{width:100%;aspect-ratio:9/16;display:block;border-radius:22px;background:#000;}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 14px;}
@@ -180,12 +143,9 @@
   .foot-links{display:flex;gap:24px;flex-wrap:wrap;}
   .foot-links a{color:var(--grigio);font-weight:600;font-size:.95rem;}
   .foot-links a:hover{color:var(--verde);}
-  /* #9aa0ad su #fff da' 2,68:1: sotto il 4,5:1 che WCAG chiede al testo
-     piccolo. #5f6673 da' 5,74:1 e resta visibilmente secondario. */
   .foot-note{margin-top:22px;font-size:.85rem;color:#5f6673;}
   .foot-note.dati{margin-top:6px;}
   .foot-note.dati a{color:inherit;text-decoration:underline;}
-  /* Piani: cosa è gratis e cosa sblocca Premium */
   .piani{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;}
   .piano{background:var(--sfondo);border:1px solid var(--bordo);border-radius:var(--raggio);padding:28px;}
   .piano.evid{border-color:var(--verde);box-shadow:var(--ombra);}
@@ -196,7 +156,6 @@
   .piano li{padding-left:27px;position:relative;color:var(--grigio);}
   .piano li::before{content:"";position:absolute;left:2px;top:.42em;width:13px;height:7px;border-left:2.5px solid var(--verde);border-bottom:2.5px solid var(--verde);transform:rotate(-45deg);}
   .piano .nota{margin-top:18px;padding-top:16px;border-top:1px solid var(--bordo);font-size:.9rem;color:var(--grigio);}
-  /* Listino: annulla la spunta e il rientro ereditati da `.piano li` */
   .piano .prezzi-lista{list-style:none;margin:18px 0 0;padding:0;display:block;border:1px solid var(--bordo);border-radius:14px;overflow:hidden;}
   .piano .prezzi-lista li{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--bordo);color:var(--testo);}
   .piano .prezzi-lista li:last-child{border-bottom:0;}
@@ -207,30 +166,10 @@
   .piano .prezzi-lista .p small{font-weight:600;color:var(--grigio);font-size:.78rem;}
   .piano .prezzi-lista .best{background:var(--verde-chiaro);}
 
-  /* ------------------------------------------------------------------
-     HERO CINEMATOGRAFICO
-     Portato a mano dal componente React di 21st.dev (@jahed,
-     cinematic-landing-hero) verso HTML e CSS normali. Il componente
-     originale vuole React, Tailwind e shadcn: qui non c'e' niente da
-     compilare, perche' GitHub Pages serve i file come sono e le pagine
-     legali (privacy, termini, assistenza, reimposta) devono continuare a
-     rispondere agli stessi indirizzi che stanno su App Store Connect.
-
-     Tre regole che il porting rispetta:
-     - senza JavaScript, o se il CDN di GSAP non risponde, la pagina resta
-       leggibile e completa: l'animazione si accende solo dopo che GSAP
-       ha risposto davvero (classe `cinema` sulla radice);
-     - `prefers-reduced-motion` spegne tutto e lascia la composizione ferma;
-     - l'H1 vero resta nel documento, con il testo vero: niente titolo
-       finto per i motori di ricerca.
-     ------------------------------------------------------------------ */
-
   .cinema-palco{position:relative;width:100%;height:100svh;min-height:560px;
     overflow:hidden;display:flex;align-items:center;justify-content:center;
     perspective:1500px;background:var(--sfondo);}
 
-  /* La grana della pellicola e la griglia: due veli, nessuno dei due
-     intercetta i clic. */
   .cinema-grana{position:absolute;inset:0;z-index:50;pointer-events:none;
     opacity:.05;mix-blend-mode:overlay;
     background:url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23g)"/></svg>');}
@@ -257,7 +196,6 @@
   .cinema-testo .lead{color:var(--grigio);font-size:1.06rem;max-width:54ch;
     margin:22px auto 0;}
 
-  /* La chiamata all'azione: compare in coda, quando la scheda si ritira. */
   .cinema-finale{position:absolute;z-index:10;width:100%;padding:0 20px;
     display:flex;flex-direction:column;align-items:center;text-align:center;
     opacity:0;pointer-events:none;}
@@ -268,9 +206,6 @@
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
   .cinema-finale p{color:var(--grigio);font-size:1.06rem;max-width:46ch;margin:0 0 30px;}
 
-  /* LA SCHEDA FISICA. Nell'originale e' blu notte; qui e' il verde di
-     ShiftPro portato al buio, perche' la scheda deve essere di questa app
-     e non di quella da cui arriva il componente. */
   .cinema-scena{position:absolute;inset:0;z-index:20;display:flex;
     align-items:center;justify-content:center;pointer-events:none;perspective:1500px;}
   .cinema-scheda{position:relative;width:92vw;height:88svh;border-radius:32px;
@@ -282,7 +217,6 @@
       inset 0 1px 2px rgba(255,255,255,.16),inset 0 -2px 4px rgba(0,0,0,.7);}
   @media(min-width:768px){.cinema-scheda{width:86vw;height:84svh;border-radius:40px;}}
 
-  /* Il riflesso che segue il mouse. */
   .cinema-riflesso{position:absolute;inset:0;border-radius:inherit;z-index:50;
     pointer-events:none;mix-blend-mode:screen;
     background:radial-gradient(700px circle at var(--mx,50%) var(--my,50%),
@@ -315,8 +249,6 @@
     .cinema-detto p{display:block;max-width:34ch;}
   }
 
-  /* IL TELEFONO. Stessa scocca dell'originale, schermo rifatto: qui dentro
-     ci sta un mese di turni, non un anello di giorni. */
   .cinema-telefono{order:2;position:relative;width:100%;height:300px;
     display:flex;align-items:center;justify-content:center;z-index:10;perspective:1000px;}
   @media(min-width:1024px){.cinema-telefono{height:580px;}}
@@ -346,11 +278,6 @@
   .cinema-scatto{display:block;width:100%;height:100%;object-fit:cover;
     object-position:top center;}
 
-
-
-
-
-  /* Le due targhette di vetro che galleggiano ai lati. */
   .cinema-targa{position:absolute;z-index:30;display:flex;align-items:center;gap:12px;
     border-radius:16px;padding:12px 14px;
     background:linear-gradient(135deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,.015) 100%);
@@ -371,16 +298,8 @@
     .cinema-targa-bassa{bottom:74px;right:-86px;}
   }
 
-  /* Lo stato di partenza lo mette il JavaScript, mai il foglio di stile:
-     se GSAP non arriva, qui non c'e' niente di nascosto da riaccendere. */
   html.cinema .cinema-nascondi{visibility:hidden;}
 
-  /* IL RIPIEGO STATICO. Vale quando l'animazione non c'e': GSAP non e'
-     arrivato, il ticker e' fermo, o il sistema ha chiesto meno movimento.
-     Non basta "smettere di nascondere": finche' testo e scena restano
-     sovrapposti, la scheda copre il titolo e l'H1 sparisce. Qui la pagina
-     torna quello che e' — prima il titolo, poi la scheda — e si legge tutta.
-     Il modo animato e' l'eccezione (`html.cinema`), non il contrario. */
   html:not(.cinema) .cinema-palco{height:auto;min-height:0;display:block;
     padding:56px 0 64px;overflow:visible;}
   html:not(.cinema) .cinema-testo{position:relative;}
@@ -396,16 +315,6 @@
   }
 </style>
 <script>
-/* L'hero cinematografico parte nascosto, ma solo se ha davvero una
-   possibilita' di accendersi. Mettere la classe qui, prima che il browser
-   disegni, evita il lampo di contenuto che comparirebbe e sparirebbe.
-
-   La rete di sicurezza e' il timeout: se GSAP non arriva — CDN irraggiungibile,
-   blocco degli script, connessione morta a meta' — dopo due secondi e mezzo la
-   classe se ne va e la pagina si vede lo stesso, ferma. Nessun visitatore deve
-   restare davanti a uno schermo vuoto perche' un file esterno non ha risposto.
-
-   Chi ha chiesto meno animazioni al sistema non entra proprio qui dentro. */
 (function () {
   try {
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -414,7 +323,7 @@
     setTimeout(function () {
       if (!window.__cinemaPronto) r.classList.remove("cinema");
     }, 2500);
-  } catch (e) { /* qualunque cosa vada storta, la pagina resta visibile */ }
+  } catch (e) {}
 })();
 </script>
 </head>
@@ -523,15 +432,6 @@
     </div>
   </div>
 
-  <!-- Il video sta qui, fra le schermate ferme e l'elenco delle funzioni:
-       chi ha appena scorso dieci immagini statiche vede l'app muoversi, e
-       solo dopo legge cosa fa.
-
-       `muted` non e' una gentilezza, e' un requisito: senza, i browser
-       rifiutano l'`autoplay` e resterebbe un rettangolo fermo. `playsinline`
-       serve a iOS, che altrimenti lo apre a schermo intero da solo. E
-       `preload="metadata"` fa scaricare i tre megabytes e mezzo solo a chi
-       arriva davvero fin qui, non a tutti quelli che aprono la pagina. -->
   <section id="video">
     <div class="wrap">
       <div class="sec-head">
@@ -712,20 +612,10 @@
       </nav>
     </div>
     <p class="foot-note">© 2026 Matteo De Min · ShiftPro — Gestione Turni. Tutti i marchi citati appartengono ai rispettivi proprietari.</p>
-    <!-- Informazioni generali obbligatorie: art. 7 del D.Lgs. 70/2003, che
-         impone a chi presta un servizio della societa' dell'informazione di rendere
-         "facilmente accessibili" nome, domicilio, recapiti, iscrizione al registro
-         delle imprese e partita IVA. "Facilmente accessibili" vuol dire su ogni
-         pagina, non in una pagina che si trova cercandola. L'art. 21 punisce la
-         violazione con una sanzione da 103 a 10.000 euro, raddoppiata in caso di
-         recidiva o particolare gravita'.
-         Manca il numero REA (lettera d): e' l'unica ancora scoperta. -->
     <p class="foot-note dati">Matteo De Min &middot; Frazione Sant&rsquo;Antonio 148/4, Castellamonte (TO), Italia &middot; P. IVA IT13334350017 &middot; <a href="mailto:matteo.de.min@outlook.it">matteo.de.min@outlook.it</a></p>
   </div>
 </footer>
 
-<!-- Dati strutturati: aiutano Google a capire che questa pagina descrive
-     un'app iOS gratuita, e a mostrarne prezzo e categoria nei risultati. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -748,13 +638,6 @@
 }
 </script>
 
-<!-- GSAP servito da questo sito, non da cdnjs: una richiesta a un CDN manda
-     l'IP di ogni visitatore a un terzo, che sotto GDPR e' un dato personale
-     ceduto senza base giuridica. E' la stessa ragione per cui i font stanno
-     gia' in locale. In piu' il sito non si rompe se il CDN cade. -->
-<!-- Chi ha chiesto meno animazioni nelle impostazioni del sistema non deve
-     ritrovarsi un video che parte da solo: si ferma e restano i comandi, che
-     ci sono comunque. -->
 <script>
 (function () {
   var meno = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -769,15 +652,6 @@
 <script src="/js/gsap.min.js"></script>
 <script src="/js/ScrollTrigger.min.js"></script>
 <script>
-/* La regia dell'hero. Tradotta dal componente React di 21st.dev, con tre
-   differenze volute:
-
-   - il blocco della pagina dura 3200px invece di 7000: sotto l'hero c'e' un
-     sito vero, con funzioni, prezzi e domande, e farcisi scorrere sette
-     schermate prima di arrivarci sarebbe una tassa, non un effetto;
-   - niente stato iniziale nel foglio di stile: se questo file non parte, la
-     pagina resta comunque leggibile (vedi lo script in cima al documento);
-   - il conto delle ore sale fino a un numero vero, non a un segnaposto. */
 (function () {
   if (!window.gsap || !window.ScrollTrigger) return;
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -793,16 +667,12 @@
   var finale   = document.getElementById("cinema-finale");
   var scatto   = document.querySelector(".cinema-scatto");
 
-  /* Da qui in avanti gli elementi li muove GSAP, quindi la classe che li
-     teneva nascosti non serve piu': toglierla adesso evita che `visibility`
-     litighi con `autoAlpha`. */
   gsap.utils.toArray(".cinema-nascondi").forEach(function (el) {
     el.classList.remove("cinema-nascondi");
   });
   gsap.set([".cinema-t1", ".cinema-t2", "#cinema-scheda", "#cinema-marchio",
             "#cinema-detto", ".cinema-targa"], { autoAlpha: 0 });
 
-  /* 1. L'ingresso: il titolo arriva a fuoco, la seconda riga si scopre. */
   gsap.set(".cinema-t1", { y: 50, scale: .9, filter: "blur(18px)" });
   gsap.set(".cinema-t2", { clipPath: "inset(0 100% 0 0)", autoAlpha: 1 });
 
@@ -812,9 +682,6 @@
     .to(".cinema-t2", { duration: 1.2, clipPath: "inset(0 0% 0 0)",
                         ease: "power4.inOut" }, "-=.9");
 
-  /* 2. Il mouse: il riflesso sulla scheda e l'inclinazione del telefono.
-     Una sola richiesta di disegno per movimento, altrimenti su un portatile
-     si sente. */
   var richiesta = 0;
   window.addEventListener("mousemove", function (e) {
     if (window.scrollY > window.innerHeight * 2) return;
@@ -832,8 +699,6 @@
     });
   }, { passive: true });
 
-  /* 3. Lo scorrimento: la scheda sale, si apre, mostra il telefono, poi si
-     ritira e lascia il posto alla chiamata all'azione. */
   var stretto = window.innerWidth < 768;
 
   gsap.set(scheda, { yPercent: 120, autoAlpha: 1 });
@@ -872,29 +737,13 @@
     .to(finale, { scale: 1, filter: "blur(0px)", ease: "expo.inOut", duration: 1.6 }, "ritiro")
     .to(scheda, { yPercent: -130, ease: "power3.in", duration: 1.3 });
 
-  /* Il blocco della pagina va rimisurato quando il layout e' davvero finito.
-     Senza questo, ScrollTrigger costruisce il suo contenitore mentre font e
-     immagini stanno ancora arrivando, si porta dietro una larghezza di zero e
-     l'hero resta invisibile: succedeva davvero, misurato in anteprima
-     (pin-spacer largo 0 su una pagina larga 1265). */
   window.addEventListener("load", function () { ScrollTrigger.refresh(); });
 
-  /* SECONDA RETE DI SICUREZZA, e non e' un di piu'.
-     La prima (lo script in cima al documento) copre il caso "GSAP non
-     arriva". Questa copre il caso peggiore: GSAP arriva, questo codice
-     parte, nasconde gli elementi con `autoAlpha: 0` — e poi il ticker non
-     gira mai, perche' il browser ha congelato requestAnimationFrame. Capita
-     in una scheda aperta in secondo piano, e capita per davvero: misurato
-     qui, ticker fermo a 0.00 con la pagina visibile.
-     Senza questo controllo l'hero resterebbe bianco per sempre. */
   setTimeout(function () {
     if (gsap.globalTimeline.time() > 0) return;
     gsap.set([".cinema-t1", ".cinema-t2", "#cinema-scheda", "#cinema-marchio",
               "#cinema-detto", ".cinema-targa", "#cinema-telefono", ".cinema-scatto"],
              { clearProps: "all" });
-    /* Il blocco della pagina va smontato, non solo ignorato: il contenitore
-       che ScrollTrigger si crea vale 3200px di altezza, e senza di lui
-       resterebbe una voragine bianca fra la scheda e la sezione sotto. */
     ScrollTrigger.getAll().forEach(function (st) { st.kill(true); });
     document.documentElement.classList.remove("cinema");
   }, 1400);

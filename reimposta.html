@@ -10,9 +10,6 @@
 <title>Nuova password &middot; ShiftPro</title>
 <meta name="description" content="Scegli una nuova password per il tuo account ShiftPro.">
 <style>
-  /* Stessi font del resto del sito, serviti da qui: una richiesta a
-     fonts.googleapis.com manderebbe l'IP di chi apre questa pagina a un terzo,
-     e questa e' la pagina in cui si digita una password. */
   @font-face{
     font-family:"Plus Jakarta Sans"; font-style:normal; font-weight:400 800; font-display:swap;
     src:url("font/plus-jakarta-sans-latin-ext.woff2") format("woff2");
@@ -67,7 +64,6 @@
     <p class="sub">Account di sincronizzazione ShiftPro</p>
   </header>
 
-  <!-- 1. Il modulo vero, mostrato solo se il link porta un accesso valido. -->
   <div class="card" id="modulo" hidden>
     <h2>Scegli la nuova password</h2>
     <p>Da qui in avanti entrerai in ShiftPro con questa.</p>
@@ -84,20 +80,17 @@
     </form>
   </div>
 
-  <!-- 2. Fatto. -->
   <div class="card" id="fatto" hidden>
     <h2>Password cambiata</h2>
     <p>Torna in ShiftPro, apri <strong>Impostazioni &rsaquo; Account</strong> e accedi con la nuova password.</p>
     <p class="evidenza">I tuoi dati non sono stati toccati: cambia solo il modo di entrare.</p>
   </div>
 
-  <!-- 3. Conferma della registrazione (se un domani verra' attivata). -->
   <div class="card" id="confermato" hidden>
     <h2>Account confermato</h2>
     <p>Puoi tornare in ShiftPro e accedere con la tua email e la password che hai scelto.</p>
   </div>
 
-  <!-- 4. Link scaduto, gia' usato, o aperto senza link. -->
   <div class="card" id="scaduto" hidden>
     <h2 id="scaduto-titolo">Questo link non vale piu&rsquo;</h2>
     <p id="scaduto-testo">I link per reimpostare la password durano un&rsquo;ora e si possono usare una volta sola.</p>
@@ -114,9 +107,6 @@
 (function(){
   "use strict";
 
-  // Stesso progetto dell'app. La chiave "anon" e' pubblica per costruzione:
-  // e' quella che viaggia dentro ogni copia dell'app, e da sola non apre
-  // niente — sono le regole Row Level Security sulla tabella a decidere.
   var URL_BASE = "https://mobjgzhzetuyltfvtkhr.supabase.co";
   var CHIAVE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vYmpnemh6ZXR1eWx0ZnZ0a2hyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0MDI4MzcsImV4cCI6MjEwMjk3ODgzN30.uFP8WuBnISr7hOCb1t7HH1fV02nQh1yRLh2eE5u9LuI";
 
@@ -134,18 +124,12 @@
     return fuori;
   }
 
-  // Supabase puo' consegnare l'esito in due forme diverse a seconda di come
-  // e' fatto il modello dell'email: la sessione gia' pronta nel frammento
-  // (#access_token=...), oppure un gettone da scambiare nella query
-  // (?token_hash=...). Le gestisco tutte e due invece di indovinare quale.
   var frammento = leggi(window.location.hash);
   var query = leggi(window.location.search);
   var campo = {};
   Object.keys(query).forEach(function(k){ campo[k] = query[k]; });
   Object.keys(frammento).forEach(function(k){ campo[k] = frammento[k]; });
 
-  // Il gettone sparisce dalla barra degli indirizzi appena letto: non deve
-  // restare nella cronologia del telefono ne' finire in uno screenshot.
   if (window.history && window.history.replaceState) {
     window.history.replaceState(null, "", window.location.pathname);
   }
@@ -163,7 +147,6 @@
     mostra("scaduto");
   }
 
-  // --- che pagina mostrare ------------------------------------------------
   if (campo.error || campo.error_code || campo.error_description) {
     fallito(null, null);
 
@@ -174,7 +157,6 @@
     apriModulo();
 
   } else if (campo.token_hash && campo.type) {
-    // Forma con gettone da scambiare: lo si converte in una sessione.
     fetch(URL_BASE + "/auth/v1/verify", {
       method: "POST",
       headers: { "apikey": CHIAVE, "Content-Type": "application/json" },
@@ -198,7 +180,6 @@
             "Questa pagina funziona solo aprendo il link contenuto nell'email di reimpostazione.");
   }
 
-  // --- invio --------------------------------------------------------------
   document.getElementById("form").addEventListener("submit", function(evento){
     evento.preventDefault();
     var p1 = document.getElementById("p1").value;
@@ -233,8 +214,6 @@
         bottone.disabled = false;
         esito.className = "esito male";
         var m = corpo.msg || corpo.error_description || corpo.message || "";
-        // I messaggi del server sono in inglese: quelli che capitano davvero
-        // li traduco, il resto lo dico in modo utile invece che letterale.
         if (/expired|invalid/i.test(m)) {
           esito.textContent = "Il link e’ scaduto o gia’ usato: chiedine un altro dall’app.";
         } else if (/should be different|same as the old/i.test(m)) {
