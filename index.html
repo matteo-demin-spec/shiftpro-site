@@ -138,6 +138,12 @@
   .strip img{height:400px;width:auto;border-radius:20px;box-shadow:0 10px 28px rgba(20,30,60,.12);scroll-snap-align:center;flex:0 0 auto;}
 
   section{padding:70px 0;}
+  /* Il video e' verticale come il telefono che mostra: largo 300 sta comodo
+     su un portatile e occupa quasi tutta la larghezza su un telefono.
+     `aspect-ratio` tiene lo spazio prima che il file arrivi, cosi' il resto
+     della pagina non salta mentre carica. */
+  .video-cornice{max-width:300px;margin:0 auto;}
+  .video-cornice video{width:100%;aspect-ratio:9/16;display:block;border-radius:22px;background:#000;}
   .sec-head{text-align:center;max-width:680px;margin:0 auto 14px;}
   .sec-head .eyebrow{margin-bottom:14px;}
   .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:800;}
@@ -517,6 +523,34 @@
     </div>
   </div>
 
+  <!-- Il video sta qui, fra le schermate ferme e l'elenco delle funzioni:
+       chi ha appena scorso dieci immagini statiche vede l'app muoversi, e
+       solo dopo legge cosa fa.
+
+       `muted` non e' una gentilezza, e' un requisito: senza, i browser
+       rifiutano l'`autoplay` e resterebbe un rettangolo fermo. `playsinline`
+       serve a iOS, che altrimenti lo apre a schermo intero da solo. E
+       `preload="metadata"` fa scaricare i tre megabytes e mezzo solo a chi
+       arriva davvero fin qui, non a tutti quelli che aprono la pagina. -->
+  <section id="video">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">In movimento</span>
+        <h2>Venticinque secondi</h2>
+        <p>Il mese, la rotazione, gli straordinari e la stima dello stipendio. Senza audio.</p>
+      </div>
+      <div class="video-cornice">
+        <video poster="shiftpro-web-poster.jpg" preload="metadata"
+               muted loop playsinline autoplay controls
+               aria-label="ShiftPro in uso: calendario dei turni, rotazione automatica, ore e stima dello stipendio">
+          <source src="shiftpro-web.mp4" type="video/mp4">
+          Il tuo browser non riproduce i video.
+          <a href="shiftpro-web.mp4">Scarica il filmato</a>.
+        </video>
+      </div>
+    </div>
+  </section>
+
   <section id="funzioni">
     <div class="wrap">
       <div class="sec-head">
@@ -718,6 +752,20 @@
      l'IP di ogni visitatore a un terzo, che sotto GDPR e' un dato personale
      ceduto senza base giuridica. E' la stessa ragione per cui i font stanno
      gia' in locale. In piu' il sito non si rompe se il CDN cade. -->
+<!-- Chi ha chiesto meno animazioni nelle impostazioni del sistema non deve
+     ritrovarsi un video che parte da solo: si ferma e restano i comandi, che
+     ci sono comunque. -->
+<script>
+(function () {
+  var meno = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!meno || !meno.matches) return;
+  var v = document.querySelector("#video video");
+  if (!v) return;
+  v.autoplay = false;
+  v.loop = false;
+  v.pause();
+})();
+</script>
 <script src="/js/gsap.min.js"></script>
 <script src="/js/ScrollTrigger.min.js"></script>
 <script>
