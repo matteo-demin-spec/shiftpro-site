@@ -57,51 +57,51 @@
 <body>
 <div class="wrap">
 
-  <nav class="top"><a href="./">&larr; ShiftPro</a> &nbsp;&middot;&nbsp; <a href="assistenza.html">Assistenza</a></nav>
+  <nav class="top"><a href="./">&larr; ShiftPro</a> &nbsp;&middot;&nbsp; <a href="assistenza.html" data-t="assistenza">Assistenza</a></nav>
 
   <header>
     <img class="logo" src="apple-touch-icon.png" alt="ShiftPro" width="88" height="88">
-    <h1>Nuova password</h1>
-    <p class="sub">Account di sincronizzazione ShiftPro</p>
+    <h1 data-t="h1">Nuova password</h1>
+    <p class="sub" data-t="sub">Account ShiftPro</p>
   </header>
 
   <div class="card" id="modulo" hidden>
-    <h2>Scegli la nuova password</h2>
-    <p>Da qui in avanti entrerai in ShiftPro con questa.</p>
+    <h2 data-t="modulo_titolo">Scegli la nuova password</h2>
+    <p data-t="modulo_testo">Da qui in avanti entrerai in ShiftPro con questa.</p>
     <form id="form" novalidate>
-      <label for="p1">Nuova password</label>
+      <label for="p1" data-t="p1">Nuova password</label>
       <input type="password" id="p1" autocomplete="new-password" required minlength="8" spellcheck="false">
-      <p class="aiuto">Almeno 8 caratteri.</p>
+      <p class="aiuto" data-t="aiuto">Almeno 8 caratteri.</p>
 
-      <label for="p2">Ripetila</label>
+      <label for="p2" data-t="p2">Ripetila</label>
       <input type="password" id="p2" autocomplete="new-password" required minlength="8" spellcheck="false">
 
-      <button type="submit" id="invia">Salva la nuova password</button>
+      <button type="submit" id="invia" data-t="invia">Salva la nuova password</button>
       <p class="esito" id="esito" role="status" aria-live="polite"></p>
     </form>
   </div>
 
   <div class="card" id="fatto" hidden>
-    <h2>Password cambiata</h2>
-    <p>Torna in ShiftPro, apri <strong>Impostazioni &rsaquo; Account</strong> e accedi con la nuova password.</p>
-    <p class="evidenza">I tuoi dati non sono stati toccati: cambia solo il modo di entrare.</p>
+    <h2 data-t="fatto_titolo">Password cambiata</h2>
+    <p data-t="fatto_testo">Torna in ShiftPro e accedi con la nuova password.</p>
+    <p class="evidenza" data-t="fatto_evidenza">I tuoi dati non sono stati toccati: cambia solo il modo di entrare.</p>
   </div>
 
   <div class="card" id="confermato" hidden>
-    <h2>Account confermato</h2>
-    <p>Puoi tornare in ShiftPro e accedere con la tua email e la password che hai scelto.</p>
+    <h2 data-t="confermato_titolo">Account confermato</h2>
+    <p data-t="confermato_testo">Puoi tornare in ShiftPro e accedere con la tua email e la password che hai scelto.</p>
   </div>
 
   <div class="card" id="scaduto" hidden>
-    <h2 id="scaduto-titolo">Questo link non vale piu&rsquo;</h2>
-    <p id="scaduto-testo">I link per reimpostare la password durano dieci minuti e si possono usare una volta sola.</p>
-    <p>Riapri ShiftPro, vai su <strong>Impostazioni &rsaquo; Account &rsaquo; Accedi</strong> e tocca di nuovo
+    <h2 id="scaduto-titolo" data-t="scaduto_titolo">Questo link non vale pi&ugrave;</h2>
+    <p id="scaduto-testo" data-t="scaduto_testo">I link per reimpostare la password durano dieci minuti e si possono usare una volta sola.</p>
+    <p data-t-html="scaduto_istruzioni">Riapri ShiftPro, apri la schermata di accesso e tocca di nuovo
        <strong>Password dimenticata?</strong>: ne arriver&agrave; uno nuovo.</p>
-    <p class="evidenza">Se l&rsquo;email non arriva entro qualche minuto, controlla la posta indesiderata,
-       oppure scrivimi: <a href="mailto:matteo.de.min@outlook.it?subject=Recupero%20account%20ShiftPro">matteo.de.min@outlook.it</a>.</p>
+    <p class="evidenza"><span data-t="scaduto_evidenza">Se l&rsquo;email non arriva entro qualche minuto, controlla la posta indesiderata,
+       oppure scrivimi:</span> <a href="mailto:matteo.de.min@outlook.it?subject=Recupero%20account%20ShiftPro">matteo.de.min@outlook.it</a>.</p>
   </div>
 
-  <footer>ShiftPro &middot; <a href="privacy.html">Privacy</a> &middot; <a href="termini.html">Termini</a></footer>
+  <footer>ShiftPro &middot; <a href="privacy.html" data-t="privacy">Privacy</a> &middot; <a href="termini.html" data-t="termini">Termini</a></footer>
 </div>
 
 <script>
@@ -112,6 +112,189 @@
   var CHIAVE = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vYmpnemh6ZXR1eWx0ZnZ0a2hyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc0MDI4MzcsImV4cCI6MjEwMjk3ODgzN30.uFP8WuBnISr7hOCb1t7HH1fV02nQh1yRLh2eE5u9LuI";
 
   var MINIMO = 8;   // come l'app: le due soglie devono dire la stessa cosa
+
+  // Le lingue dell'app e del sito. Si sceglie quella del browser del
+  // telefono, che e' la stessa del telefono; altrimenti l'italiano. Le
+  // parole dei pulsanti citati ("Password dimenticata?") devono restare
+  // uguali a quelle dell'app nella stessa lingua.
+  var TESTI = {
+    it: {
+      pagina: "Nuova password \u00b7 ShiftPro",
+      descrizione: "Scegli una nuova password per il tuo account ShiftPro.",
+      assistenza: "Assistenza",
+      h1: "Nuova password",
+      sub: "Account ShiftPro",
+      modulo_titolo: "Scegli la nuova password",
+      modulo_testo: "Da qui in avanti entrerai in ShiftPro con questa.",
+      p1: "Nuova password",
+      aiuto: "Almeno 8 caratteri.",
+      p2: "Ripetila",
+      invia: "Salva la nuova password",
+      fatto_titolo: "Password cambiata",
+      fatto_testo: "Torna in ShiftPro e accedi con la nuova password.",
+      fatto_evidenza: "I tuoi dati non sono stati toccati: cambia solo il modo di entrare.",
+      confermato_titolo: "Account confermato",
+      confermato_testo: "Puoi tornare in ShiftPro e accedere con la tua email e la password che hai scelto.",
+      scaduto_titolo: "Questo link non vale pi\u00f9",
+      scaduto_testo: "I link per reimpostare la password durano dieci minuti e si possono usare una volta sola.",
+      scaduto_istruzioni: "Riapri ShiftPro, apri la schermata di accesso e tocca di nuovo <strong>Password dimenticata?</strong>: ne arriver\u00e0 uno nuovo.",
+      scaduto_evidenza: "Se l\u2019email non arriva entro qualche minuto, controlla la posta indesiderata, oppure scrivimi:",
+      privacy: "Privacy",
+      termini: "Termini",
+      server_titolo: "Non riesco a contattare il server",
+      server_testo: "Controlla la connessione e riprova ad aprire il link dall\u2019email.",
+      link_titolo: "Serve il link che ti ho mandato via email",
+      link_testo: "Questa pagina funziona solo aprendo il link contenuto nell\u2019email di reimpostazione.",
+      corta: "La password deve avere almeno {n} caratteri.",
+      diverse: "Le due password non coincidono.",
+      senza_accesso: "Il link non \u00e8 pi\u00f9 valido: chiedine un altro dall\u2019app.",
+      salvo: "Salvo\u2026",
+      scaduto_o_usato: "Il link \u00e8 scaduto o gi\u00e0 usato: chiedine un altro dall\u2019app.",
+      uguale: "Questa \u00e8 la password che avevi gi\u00e0: scegline una diversa.",
+      debole: "Password troppo debole: usa almeno {n} caratteri.",
+      generico: "Non sono riuscito a salvarla. Riprova, o scrivimi a matteo.de.min@outlook.it",
+      rete: "Non riesco a contattare il server. Controlla la connessione e riprova."
+    },
+    de: {
+      pagina: "Neues Passwort \u00b7 ShiftPro",
+      descrizione: "W\u00e4hle ein neues Passwort f\u00fcr dein ShiftPro-Konto.",
+      assistenza: "Hilfe",
+      h1: "Neues Passwort",
+      sub: "ShiftPro-Konto",
+      modulo_titolo: "W\u00e4hle dein neues Passwort",
+      modulo_testo: "Ab jetzt meldest du dich damit bei ShiftPro an.",
+      p1: "Neues Passwort",
+      aiuto: "Mindestens 8 Zeichen.",
+      p2: "Wiederholen",
+      invia: "Neues Passwort speichern",
+      fatto_titolo: "Passwort ge\u00e4ndert",
+      fatto_testo: "Geh zur\u00fcck zu ShiftPro und melde dich mit dem neuen Passwort an.",
+      fatto_evidenza: "Deine Daten wurden nicht ver\u00e4ndert: Neu ist nur die Anmeldung.",
+      confermato_titolo: "Konto best\u00e4tigt",
+      confermato_testo: "Du kannst zu ShiftPro zur\u00fcckkehren und dich mit deiner E-Mail-Adresse und dem gew\u00e4hlten Passwort anmelden.",
+      scaduto_titolo: "Dieser Link ist nicht mehr g\u00fcltig",
+      scaduto_testo: "Links zum Zur\u00fccksetzen des Passworts sind zehn Minuten g\u00fcltig und funktionieren nur einmal.",
+      scaduto_istruzioni: "\u00d6ffne ShiftPro, geh zur Anmeldung und tippe noch einmal auf <strong>Passwort vergessen?</strong>: Du bekommst einen neuen Link.",
+      scaduto_evidenza: "Wenn die E-Mail nicht innerhalb weniger Minuten ankommt, sieh im Spam-Ordner nach oder schreib mir:",
+      privacy: "Datenschutz",
+      termini: "Nutzungsbedingungen",
+      server_titolo: "Der Server ist nicht erreichbar",
+      server_testo: "Pr\u00fcfe deine Verbindung und \u00f6ffne den Link aus der E-Mail noch einmal.",
+      link_titolo: "Daf\u00fcr brauchst du den Link aus der E-Mail",
+      link_testo: "Diese Seite funktioniert nur \u00fcber den Link in der E-Mail zum Zur\u00fccksetzen.",
+      corta: "Das Passwort muss mindestens {n} Zeichen haben.",
+      diverse: "Die beiden Passw\u00f6rter stimmen nicht \u00fcberein.",
+      senza_accesso: "Der Link ist nicht mehr g\u00fcltig: Fordere in der App einen neuen an.",
+      salvo: "Wird gespeichert\u2026",
+      scaduto_o_usato: "Der Link ist abgelaufen oder wurde schon benutzt: Fordere in der App einen neuen an.",
+      uguale: "Das ist dein bisheriges Passwort: W\u00e4hle ein anderes.",
+      debole: "Passwort zu schwach: Verwende mindestens {n} Zeichen.",
+      generico: "Das Speichern hat nicht geklappt. Versuch es noch einmal oder schreib mir an matteo.de.min@outlook.it",
+      rete: "Der Server ist nicht erreichbar. Pr\u00fcfe deine Verbindung und versuch es noch einmal."
+    },
+    es: {
+      pagina: "Nueva contrase\u00f1a \u00b7 ShiftPro",
+      descrizione: "Elige una nueva contrase\u00f1a para tu cuenta de ShiftPro.",
+      assistenza: "Ayuda",
+      h1: "Nueva contrase\u00f1a",
+      sub: "Cuenta de ShiftPro",
+      modulo_titolo: "Elige tu nueva contrase\u00f1a",
+      modulo_testo: "A partir de ahora entrar\u00e1s en ShiftPro con esta.",
+      p1: "Nueva contrase\u00f1a",
+      aiuto: "Al menos 8 caracteres.",
+      p2: "Rep\u00edtela",
+      invia: "Guardar la nueva contrase\u00f1a",
+      fatto_titolo: "Contrase\u00f1a cambiada",
+      fatto_testo: "Vuelve a ShiftPro e inicia sesi\u00f3n con la nueva contrase\u00f1a.",
+      fatto_evidenza: "Tus datos no se han tocado: solo cambia la forma de entrar.",
+      confermato_titolo: "Cuenta confirmada",
+      confermato_testo: "Puedes volver a ShiftPro e iniciar sesi\u00f3n con tu correo y la contrase\u00f1a que elegiste.",
+      scaduto_titolo: "Este enlace ya no es v\u00e1lido",
+      scaduto_testo: "Los enlaces para restablecer la contrase\u00f1a duran diez minutos y solo se pueden usar una vez.",
+      scaduto_istruzioni: "Vuelve a abrir ShiftPro, ve a la pantalla de inicio de sesi\u00f3n y toca otra vez <strong>\u00bfHas olvidado la contrase\u00f1a?</strong>: te llegar\u00e1 uno nuevo.",
+      scaduto_evidenza: "Si el correo no llega en unos minutos, revisa la carpeta de correo no deseado o escr\u00edbeme:",
+      privacy: "Privacidad",
+      termini: "T\u00e9rminos",
+      server_titolo: "No consigo contactar con el servidor",
+      server_testo: "Comprueba la conexi\u00f3n y vuelve a abrir el enlace del correo.",
+      link_titolo: "Necesitas el enlace que te envi\u00e9 por correo",
+      link_testo: "Esta p\u00e1gina solo funciona abriendo el enlace del correo de restablecimiento.",
+      corta: "La contrase\u00f1a debe tener al menos {n} caracteres.",
+      diverse: "Las dos contrase\u00f1as no coinciden.",
+      senza_accesso: "El enlace ya no es v\u00e1lido: pide otro desde la app.",
+      salvo: "Guardando\u2026",
+      scaduto_o_usato: "El enlace ha caducado o ya se ha usado: pide otro desde la app.",
+      uguale: "Esa es la contrase\u00f1a que ya ten\u00edas: elige otra distinta.",
+      debole: "Contrase\u00f1a demasiado d\u00e9bil: usa al menos {n} caracteres.",
+      generico: "No he podido guardarla. Int\u00e9ntalo de nuevo o escr\u00edbeme a matteo.de.min@outlook.it",
+      rete: "No consigo contactar con el servidor. Comprueba la conexi\u00f3n e int\u00e9ntalo de nuevo."
+    },
+    en: {
+      pagina: "New password \u00b7 ShiftPro",
+      descrizione: "Choose a new password for your ShiftPro account.",
+      assistenza: "Support",
+      h1: "New password",
+      sub: "ShiftPro account",
+      modulo_titolo: "Choose your new password",
+      modulo_testo: "From now on, this is the one you\u2019ll use to sign in to ShiftPro.",
+      p1: "New password",
+      aiuto: "At least 8 characters.",
+      p2: "Repeat it",
+      invia: "Save new password",
+      fatto_titolo: "Password changed",
+      fatto_testo: "Go back to ShiftPro and sign in with your new password.",
+      fatto_evidenza: "Your data hasn\u2019t been touched: only the way you sign in has changed.",
+      confermato_titolo: "Account confirmed",
+      confermato_testo: "You can go back to ShiftPro and sign in with your email and the password you chose.",
+      scaduto_titolo: "This link is no longer valid",
+      scaduto_testo: "Password reset links last ten minutes and can only be used once.",
+      scaduto_istruzioni: "Open ShiftPro again, go to the sign-in screen and tap <strong>Forgot password?</strong> again: a new one will arrive.",
+      scaduto_evidenza: "If the email doesn\u2019t arrive within a few minutes, check your spam folder, or write to me:",
+      privacy: "Privacy",
+      termini: "Terms",
+      server_titolo: "I can\u2019t reach the server",
+      server_testo: "Check your connection and open the link from the email again.",
+      link_titolo: "You need the link I sent you by email",
+      link_testo: "This page only works when opened from the link in the password reset email.",
+      corta: "The password must be at least {n} characters long.",
+      diverse: "The two passwords don\u2019t match.",
+      senza_accesso: "The link is no longer valid: request a new one from the app.",
+      salvo: "Saving\u2026",
+      scaduto_o_usato: "The link has expired or has already been used: request a new one from the app.",
+      uguale: "That\u2019s the password you already had: choose a different one.",
+      debole: "Password too weak: use at least {n} characters.",
+      generico: "I couldn\u2019t save it. Try again, or write to me at matteo.de.min@outlook.it",
+      rete: "I can\u2019t reach the server. Check your connection and try again."
+    }
+  };
+
+  function sceltaLingua(){
+    var elenco = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "it"];
+    for (var i = 0; i < elenco.length; i++) {
+      var codice = String(elenco[i] || "").slice(0, 2).toLowerCase();
+      if (TESTI[codice]) return codice;
+    }
+    return "it";
+  }
+  var LINGUA = sceltaLingua();
+  function t(chiave, n){
+    var testo = TESTI[LINGUA][chiave] || TESTI.it[chiave] || "";
+    return n === undefined ? testo : testo.replace("{n}", n);
+  }
+
+  // Gli elementi segnati con data-t prendono il testo della lingua scelta;
+  // data-t-html quelli che contengono un <strong>. I testi sono tutti
+  // scritti qui sopra, nessuno arriva da fuori.
+  document.documentElement.lang = LINGUA;
+  document.title = t("pagina");
+  var meta = document.querySelector('meta[name="description"]');
+  if (meta) meta.setAttribute("content", t("descrizione"));
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t]"), function(el){
+    el.textContent = t(el.getAttribute("data-t"));
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-t-html]"), function(el){
+    el.innerHTML = t(el.getAttribute("data-t-html"));
+  });
 
   function mostra(id){ document.getElementById(id).hidden = false; }
   function leggi(testo){
@@ -172,13 +355,11 @@
         fallito(null, null);
       }
     }).catch(function(){
-      fallito("Non riesco a contattare il server",
-              "Controlla la connessione e riprova ad aprire il link dall'email.");
+      fallito(t("server_titolo"), t("server_testo"));
     });
 
   } else {
-    fallito("Serve il link che ti ho mandato via email",
-            "Questa pagina funziona solo aprendo il link contenuto nell'email di reimpostazione.");
+    fallito(t("link_titolo"), t("link_testo"));
   }
 
   document.getElementById("form").addEventListener("submit", function(evento){
@@ -189,13 +370,13 @@
     var bottone = document.getElementById("invia");
 
     esito.className = "esito male";
-    if (p1.length < MINIMO) { esito.textContent = "La password deve avere almeno " + MINIMO + " caratteri."; return; }
-    if (p1 !== p2) { esito.textContent = "Le due password non coincidono."; return; }
-    if (!accesso) { esito.textContent = "Il link non e’ piu’ valido: chiedine un altro dall’app."; return; }
+    if (p1.length < MINIMO) { esito.textContent = t("corta", MINIMO); return; }
+    if (p1 !== p2) { esito.textContent = t("diverse"); return; }
+    if (!accesso) { esito.textContent = t("senza_accesso"); return; }
 
     bottone.disabled = true;
     esito.className = "esito";
-    esito.textContent = "Salvo…";
+    esito.textContent = t("salvo");
 
     fetch(URL_BASE + "/auth/v1/user", {
       method: "PUT",
@@ -216,19 +397,19 @@
         esito.className = "esito male";
         var m = corpo.msg || corpo.error_description || corpo.message || "";
         if (/expired|invalid/i.test(m)) {
-          esito.textContent = "Il link e’ scaduto o gia’ usato: chiedine un altro dall’app.";
+          esito.textContent = t("scaduto_o_usato");
         } else if (/should be different|same as the old/i.test(m)) {
-          esito.textContent = "Questa e’ la password che avevi gia’: scegline una diversa.";
+          esito.textContent = t("uguale");
         } else if (/at least|weak|short/i.test(m)) {
-          esito.textContent = "Password troppo debole: usa almeno " + MINIMO + " caratteri.";
+          esito.textContent = t("debole", MINIMO);
         } else {
-          esito.textContent = "Non sono riuscito a salvarla. Riprova, o scrivimi a matteo.de.min@outlook.it";
+          esito.textContent = t("generico");
         }
       });
     }).catch(function(){
       bottone.disabled = false;
       esito.className = "esito male";
-      esito.textContent = "Non riesco a contattare il server. Controlla la connessione e riprova.";
+      esito.textContent = t("rete");
     });
   });
 })();
