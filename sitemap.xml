@@ -5,6 +5,7 @@
     <loc>https://shift-pro.it/de/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/"/>
     <lastmod>2026-09-24</lastmod>
@@ -14,6 +15,17 @@
     <loc>https://shift-pro.it/en/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/"/>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://shift-pro.it/es/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/"/>
     <lastmod>2026-09-24</lastmod>
@@ -23,6 +35,7 @@
     <loc>https://shift-pro.it/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/"/>
     <lastmod>2026-09-24</lastmod>
@@ -32,6 +45,7 @@
     <loc>https://shift-pro.it/de/datenschutz.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/datenschutz.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/privacidad.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/privacy.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -41,6 +55,17 @@
     <loc>https://shift-pro.it/en/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/datenschutz.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/privacy.html"/>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://shift-pro.it/es/privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/privacidad.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/privacy.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -50,6 +75,7 @@
     <loc>https://shift-pro.it/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/datenschutz.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/privacidad.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/privacy.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -59,6 +85,7 @@
     <loc>https://shift-pro.it/de/nutzungsbedingungen.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/nutzungsbedingungen.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/terminos.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/termini.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/termini.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -68,6 +95,17 @@
     <loc>https://shift-pro.it/en/terms.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/nutzungsbedingungen.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/terminos.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/termini.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/termini.html"/>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://shift-pro.it/es/terminos.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/nutzungsbedingungen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/terminos.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/termini.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/termini.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -77,6 +115,7 @@
     <loc>https://shift-pro.it/termini.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/nutzungsbedingungen.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/terminos.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/termini.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/termini.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -86,6 +125,7 @@
     <loc>https://shift-pro.it/de/hilfe.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/hilfe.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/support.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/ayuda.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/assistenza.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/assistenza.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -95,6 +135,17 @@
     <loc>https://shift-pro.it/en/support.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/hilfe.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/support.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/ayuda.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/assistenza.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/assistenza.html"/>
+    <lastmod>2026-09-24</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://shift-pro.it/es/ayuda.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/hilfe.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/support.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/ayuda.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/assistenza.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/assistenza.html"/>
     <lastmod>2026-09-24</lastmod>
@@ -104,6 +155,7 @@
     <loc>https://shift-pro.it/assistenza.html</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://shift-pro.it/de/hilfe.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://shift-pro.it/en/support.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://shift-pro.it/es/ayuda.html"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://shift-pro.it/assistenza.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shift-pro.it/assistenza.html"/>
     <lastmod>2026-09-24</lastmod>
