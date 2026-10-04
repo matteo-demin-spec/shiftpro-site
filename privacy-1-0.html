@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy · ShiftPro</title>
+<meta name="description" content="Come ShiftPro tratta i tuoi dati: turni e retribuzione restano sul tuo iPhone, la sincronizzazione e facoltativa. Nessuna pubblicita, nessun tracciamento.">
+<link rel="canonical" href="https://shift-pro.it/privacy-1-0.html">
+<link rel="alternate" hreflang="de" href="https://shift-pro.it/de/datenschutz-1-0.html">
+<link rel="alternate" hreflang="en" href="https://shift-pro.it/en/privacy-1-0.html">
+<link rel="alternate" hreflang="es" href="https://shift-pro.it/es/privacidad-1-0.html">
+<link rel="alternate" hreflang="it" href="https://shift-pro.it/privacy-1-0.html">
+<link rel="alternate" hreflang="x-default" href="https://shift-pro.it/privacy-1-0.html">
+<meta property="og:image" content="https://shift-pro.it/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://shift-pro.it/privacy.html">
+<meta property="og:title" content="Privacy · ShiftPro">
+<meta property="og:description" content="Come ShiftPro tratta i tuoi dati: turni e retribuzione restano sul tuo iPhone, l'account per la sincronizzazione e facoltativo. Nessuna pubblicita, nessun tracciamento, nessuna vendita di dati.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="256x256" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<style>
+  @font-face{
+    font-family:"Plus Jakarta Sans";
+    font-style:normal;
+    font-weight:400 800;
+    font-display:swap;
+    src:url("font/plus-jakarta-sans-latin-ext.woff2") format("woff2");
+    unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  @font-face{
+    font-family:"Plus Jakarta Sans";
+    font-style:normal;
+    font-weight:400 800;
+    font-display:swap;
+    src:url("font/plus-jakarta-sans-latin.woff2") format("woff2");
+    unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  :root{ --verde:#1D9E75; --testo:#1c1e26; --grigio:#5b6070; --bordo:#e7e9ef; --sfondo:#f7f8fa; }
+  *{box-sizing:border-box;}
+  body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--testo); background:var(--sfondo); line-height:1.6; }
+  .wrap{ max-width:760px; margin:0 auto; padding:32px 20px 64px; }
+  header{ border-bottom:1px solid var(--bordo); padding-bottom:20px; margin-bottom:28px; }
+  h1{ font-size:1.9rem; margin:0 0 8px; }
+  .sub{ color:var(--grigio); margin:0 0 10px; }
+  .meta{ color:#9aa0ad; font-size:.85rem; }
+  a{ color:var(--verde); }
+  section{ margin:26px 0; }
+  h2{ font-size:1.15rem; margin:0 0 8px; display:flex; gap:10px; align-items:baseline; }
+  h2 .n{ color:var(--verde); font-size:.85rem; font-weight:700; }
+  p{ margin:8px 0; color:#3a3e4b; }
+  ul{ margin:8px 0; padding-left:20px; color:#3a3e4b; }
+  li{ margin:4px 0; }
+  .evidenza{ background:rgba(29,158,117,.09); border-radius:12px; padding:14px 16px; font-size:.95rem; margin-top:10px; }
+  nav.top{ margin-bottom:18px; font-size:.9rem; display:flex;
+    align-items:center; justify-content:space-between; gap:12px; }
+  nav.top .indietro{ display:inline-flex; align-items:center; gap:6px;
+    color:var(--grigio); text-decoration:none; font-weight:600; }
+  nav.top .indietro:hover{ color:var(--verde); }
+  nav.top .lingua{ display:inline-flex; align-items:center; gap:2px;
+    padding:3px; border:1px solid var(--bordo); border-radius:9px;
+    font-size:.72rem; font-weight:600; letter-spacing:.04em; flex:none; }
+  nav.top .lingua a, nav.top .lingua .qui{ padding:3px 7px; border-radius:6px; line-height:1; }
+  nav.top .lingua a{ color:var(--grigio); text-decoration:none; }
+  nav.top .lingua a:hover{ color:#15794f; background:rgba(29,158,117,.08); }
+  nav.top .lingua .qui{ color:#fff; background:#15794f; }
+  header .fratelli{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  header .fratelli a{ border:1px solid var(--bordo); border-radius:999px;
+    padding:6px 13px; font-size:.82rem; color:var(--grigio); background:#fff;
+    text-decoration:none; }
+  header .fratelli a:hover{ color:#15794f; border-color:#15794f; }
+  footer{ margin-top:40px; padding-top:16px; border-top:1px solid var(--bordo); color:#9aa0ad; font-size:.8rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="top"><a class="indietro" href="index.html">&larr; ShiftPro</a><span class="lingua"><span class="qui" aria-current="true" aria-label="Italiano">IT</span><a href="de/datenschutz-1-0.html" hreflang="de" lang="de" aria-label="Deutsch">DE</a><a href="en/privacy-1-0.html" hreflang="en" lang="en" aria-label="English">EN</a><a href="es/privacidad-1-0.html" hreflang="es" lang="es" aria-label="Español">ES</a></span></nav>
+  <header>
+    <h1>Come ShiftPro tratta i tuoi dati</h1>
+    <p class="sub">I tuoi turni restano sul dispositivo per impostazione predefinita. Se crei un account per sincronizzarli fra dispositivi, questa pagina spiega cosa viene raccolto, dove finisce e come riprenderselo.</p>
+    <p class="meta">Ultimo aggiornamento 24 settembre 2026 · Contatto <a href="mailto:matteo.de.min@outlook.it">matteo.de.min@outlook.it</a></p>
+    <p class="evidenza versione-precedente">Versione precedente dell'informativa, valida per ShiftPro fino alla versione 1.0.9. Dalla versione 1.1 vale <a href="privacy.html">l'informativa in vigore</a>.</p>
+    <nav class="fratelli"><a href="termini-1-0.html">Termini d'uso</a><a href="assistenza.html">Assistenza</a></nav>
+  </header>
+
+  <section>
+    <h2><span class="n">01</span> Titolare del trattamento</h2>
+    <p>Il titolare del trattamento dei dati raccolti tramite ShiftPro è lo sviluppatore dell'app, contattabile all'indirizzo in fondo a questa pagina. ShiftPro non appartiene a una società terza né condivide dati con altre app.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span> Quali dati raccogliamo</h2>
+    <p>ShiftPro funziona interamente offline, sul tuo dispositivo, finché non crei volontariamente un account.</p>
+    <ul>
+      <li><strong>Uso senza account</strong> — turni, rotazioni, retribuzione, impostazioni: solo sul tuo dispositivo, nulla lascia l'iPad o l'iPhone.</li>
+      <li><strong>Con account e sincronizzazione attiva</strong> — indirizzo email, password (mai in chiaro, gestita dal fornitore di autenticazione), gli stessi dati di turni/rotazioni/retribuzione: sui server di Supabase, in un'istanza con sede in Unione Europea.</li>
+      <li><strong>Abbonamento ShiftPro Premium</strong> — la ricevuta e i dati di pagamento restano sui sistemi Apple: ShiftPro non li vede mai. Se compri mentre sei collegato, sui nostri server vengono registrati <strong>un identificativo dell'acquisto assegnato da Apple, quale piano hai e fino a quando vale</strong>, insieme al tuo account. Servono a due cose: sapere a chi appartiene quell'abbonamento, così non risulta attivo per un'altra persona che usa lo stesso dispositivo, e ritrovartelo quando accedi da un altro dispositivo — anche con un Apple Account diverso. Non contengono importi, né metodo di pagamento, né nulla che riguardi la tua carta.</li>
+    </ul>
+    <div class="evidenza"><strong>Cosa non facciamo:</strong> nessun identificatore pubblicitario, nessun tracciamento fra app di terzi, nessuna vendita o cessione di dati a scopo di marketing, nessuna pubblicità nell'app.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span> Perché li trattiamo</h2>
+    <p>Trattiamo i tuoi dati solo per fornirti il servizio che hai richiesto:</p>
+    <ul>
+      <li><strong>Far funzionare l'app</strong> — calcolare turni, straordinari e stima della retribuzione (base giuridica: esecuzione del contratto d'uso dell'app).</li>
+      <li><strong>Sincronizzare fra dispositivi</strong>, solo se attivi volontariamente questa funzione creando un account (base giuridica: esecuzione del contratto, su tua richiesta esplicita).</li>
+      <li><strong>Gestire l'abbonamento Premium</strong>, se lo attivi (base giuridica: esecuzione del contratto).</li>
+    </ul>
+    <p>Non trattiamo mai i tuoi dati per profilazione, pubblicità mirata o finalità diverse da quelle che hai scelto attivamente usando l'app.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span> Dove e per quanto</h2>
+    <p>Se non crei un account, questa domanda non si pone: i dati restano nella memoria protetta del tuo dispositivo, sotto il tuo controllo esclusivo, e vengono cancellati se disinstalli l'app.</p>
+    <p>Se crei un account, i dati sincronizzati sono conservati sui server di Supabase (istanza europea) finché l'account resta attivo. Puoi eliminare l'account e tutti i dati associati in qualsiasi momento dalle Impostazioni dell'app: la cancellazione è immediata e definitiva.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span> Chi altro li vede</h2>
+    <p>Solo tre soggetti, tutti strettamente necessari a far funzionare le funzioni che scegli di usare:</p>
+    <ul>
+      <li><strong>Supabase</strong> — fornitore dell'infrastruttura di autenticazione e sincronizzazione, usato come responsabile del trattamento. Ospita i dati solo se attivi un account, e — se compri da collegato — anche l'identificativo dell'acquisto descritto al punto 02.</li>
+      <li><strong>Resend</strong> — consegna per conto di Supabase le email di servizio (conferma della registrazione, recupero della password), come responsabile del trattamento: riceve il tuo indirizzo email e il testo del messaggio, nient'altro, e solo se crei un account. È una società statunitense e tratta i dati negli Stati Uniti, con le garanzie previste dal GDPR: aderisce all'EU-U.S. Data Privacy Framework e il suo accordo sul trattamento dei dati include le clausole contrattuali standard della Commissione europea.</li>
+      <li><strong>Apple</strong> — gestisce il pagamento dell'abbonamento Premium come titolare autonomo del trattamento per i dati di fatturazione: ShiftPro non li vede né li riceve.</li>
+    </ul>
+    <p>Nessun altro soggetto — nessuna rete pubblicitaria, nessun servizio di analisi comportamentale, nessuna vendita di dati a terzi.</p>
+    <p>In casi eccezionali previsti dalla legge — ad esempio un ordine dell'autorità giudiziaria o un'indagine su un uso illecito di ShiftPro — potremmo essere tenuti a comunicare i tuoi dati alle autorità competenti, nella misura strettamente necessaria.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span> Sicurezza</h2>
+    <ul>
+      <li>Le connessioni fra l'app e i server sono cifrate (HTTPS/TLS).</li>
+      <li>I token della tua sessione sono custoditi nel portachiavi cifrato del dispositivo (Keychain), mai in chiaro.</li>
+      <li>Regole di sicurezza a livello di riga (Row Level Security) sul database impediscono a qualsiasi utente — te compreso, se non autenticato correttamente — di leggere i dati di un altro account.</li>
+      <li>Il file locale dell'archivio è protetto dalla cifratura di sistema di iOS quando il dispositivo è bloccato.</li>
+    </ul>
+    <h3>Chi amministra il servizio</h3>
+    <p>Il titolare del trattamento ha accesso tecnico al database, come chiunque
+      gestisca un servizio con un archivio: le regole a livello di riga proteggono
+      gli utenti fra loro, non da chi possiede il progetto. Quell'accesso non viene
+      usato per leggere i tuoi turni — serve alla manutenzione e all'assistenza, e
+      solo se sei tu a chiederla.</p>
+    <p>Se preferisci che i tuoi dati non lascino il dispositivo, non creare un
+      account: ShiftPro funziona per intero offline, e senza account nulla viene
+      mai inviato.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">07</span> I tuoi diritti</h2>
+    <p>In quanto interessato ai sensi del Regolamento (UE) 2016/679 (GDPR), hai diritto a:</p>
+    <ul>
+      <li><strong>Accesso e portabilità</strong> — esporta un backup completo in formato leggibile da Impostazioni → Dati → Esporta backup, in qualsiasi momento.</li>
+      <li><strong>Rettifica</strong> — modifichi direttamente in app turni, rotazioni e retribuzione: non serve chiederlo a noi.</li>
+      <li><strong>Cancellazione</strong> — elimina definitivamente account e dati sincronizzati da Impostazioni → Sincronizzazione → Elimina account.</li>
+      <li><strong>Limitazione e opposizione</strong> — puoi smettere di sincronizzare in ogni momento uscendo dall'account: l'app torna a funzionare solo in locale.</li>
+    </ul>
+    <p>Per qualunque richiesta che non riesci a completare da solo in app, scrivici: rispondiamo entro 30 giorni, come previsto dal GDPR.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">08</span> Minori</h2>
+    <p>ShiftPro non è pensata né indirizzata a persone sotto i 16 anni. Non raccogliamo consapevolmente dati di minori di quell'età.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">09</span> Modifiche a questa informativa</h2>
+    <p>Se cambiamo in modo sostanziale come trattiamo i tuoi dati, aggiorniamo questa pagina e la data in alto. Le modifiche non sono mai retroattive rispetto a un consenso già dato con condizioni diverse.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">10</span> Reclami e autorità di controllo</h2>
+    <p>Se ritieni che il trattamento dei tuoi dati violi la normativa, puoi proporre reclamo al <strong>Garante per la protezione dei dati personali</strong> (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>), l'autorità italiana competente, o all'autorità del tuo Paese di residenza se diverso dall'Italia.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">11</span> Contatti</h2>
+    <p>Per qualunque domanda su questa informativa o sui tuoi dati, scrivi a <a href="mailto:matteo.de.min@outlook.it"><strong>matteo.de.min@outlook.it</strong></a>.</p>
+  </section>
+
+  <footer>
+    © 2026 ShiftPro — documento valido per l'app iOS ShiftPro e i servizi collegati.<br>
+    Matteo De Min &middot; Frazione Sant&rsquo;Antonio 148/4, Castellamonte (TO), Italia &middot; P. IVA IT13334350017 &middot; <a href="mailto:matteo.de.min@outlook.it">matteo.de.min@outlook.it</a>
+  </footer>
+</div>
+</body>
+</html>
