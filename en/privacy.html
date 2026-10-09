@@ -97,11 +97,12 @@
 
   <section>
     <h2><span class="n">02</span> What data we collect</h2>
-    <p>Using ShiftPro requires an account.</p>
+    <p>Using ShiftPro requires an account. To create one you need an email address and a password: without them, you can't use the app.</p>
     <ul>
       <li><strong>Account</strong> — email address, password (never stored in plain text, handled by the authentication provider) and the phone's language, used to write your service emails in your own language.</li>
       <li><strong>Your name, if you enter it</strong> — it's optional: you enter it yourself in Settings → Account and sync, and we only use it to greet you in the Calendar and on the ShiftPro Premium card. It's synced with your account, so you find it on all your devices. To delete it, just clear the field, or delete the account.</li>
-      <li><strong>Your work data</strong> — shifts, rotations, pay and settings, including the country and region where you work, used to work out public holidays and pay under local rules: on your device and, once synced, on Supabase's servers, in an instance based in the European Union.</li>
+      <li><strong>If you write to us</strong> — your email address, the text of your message and a technical line (ShiftPro version, iOS version, phone model) that you see before sending. No shifts, no pay.</li>
+      <li><strong>Your work data</strong> — shifts, rotations, pay and settings, including the country and region where you work, used to work out public holidays and pay under local rules: on your device and, once synced, on Supabase's servers, in an instance based in the European Union, in Frankfurt (Germany).</li>
       <li><strong>ShiftPro Premium subscription</strong> — the receipt and payment data stay on Apple's systems: ShiftPro never sees them. When you buy, our servers record <strong>a purchase identifier assigned by Apple, which plan you have and until when it is valid</strong>, together with your account. They serve two purposes: knowing who the subscription belongs to, so it doesn't show as active for another person using the same device, and giving it back to you when you sign in on another device — even with a different Apple Account. They contain no amounts, no payment method and nothing about your card.</li>
       <li><strong>The proof of what we've told you</strong> — the version of the Terms and the Privacy policy you accepted when creating the account, with when they were shown to you and when you accepted them, and, for each what's-new notice the app shows you, which version of the text it was, when it was shown to you and when you tapped "Got it". These are linked only to the account's identifier: no email, no shifts, no pay.</li>
     </ul>
@@ -116,6 +117,7 @@
       <li><strong>Storing and syncing your data</strong>, including your name if you enter it, on your account, so you find them on every device where you sign in (legal basis: performance of the contract).</li>
       <li><strong>Writing to you with service emails</strong> — the code to confirm your account and password recovery (legal basis: performance of the contract).</li>
       <li><strong>Managing the Premium subscription</strong>, if you take it out (legal basis: performance of a contract).</li>
+      <li><strong>Replying when you write to us</strong> (legal basis: performance of a contract or, for questions before you use the app, pre-contractual steps).</li>
       <li><strong>Keeping the proof of what we've told you</strong> — which Terms you had accepted and that we had told you about changes, so we can prove it if a dispute arises (legal basis: legitimate interest, Article 6, paragraph 1, point (f) of the GDPR). We only record dates and versions of the texts.</li>
     </ul>
     <p>We never process your data for profiling, targeted advertising or any purpose other than the ones you actively chose by using the app.</p>
@@ -124,16 +126,18 @@
   <section>
     <h2><span class="n">04</span> Where and for how long</h2>
     <p>On the device, data sits in the app's protected storage and is deleted if you uninstall ShiftPro or sign out of your account.</p>
-    <p>On your account, it's kept on Supabase's servers (European instance) for as long as the account stays active. You can delete the account and all associated data at any time from the app's Settings: deletion is immediate and final, on the server and on the device. Your name, if you entered it, follows the same rule; if you clear the field, it's also removed from your account at the next sync.</p>
+    <p>On your account, it's kept on Supabase's servers (European instance, in Frankfurt) for as long as the account stays active. You can delete the account and all associated data at any time from the app's Settings: deletion is immediate and final, on the server and on the device. Your name, if you entered it, follows the same rule; if you clear the field, it's also removed from your account at the next sync.</p>
+    <p>The messages you send us stay in our mailbox for as long as needed to reply and follow up on your request, and in any case no longer than 24 months after the last exchange.</p>
     <p>The only exception is the proof of what we've told you: it stays for as long as the account exists and, after you delete it, for up to ten years, the ordinary limitation period for legal claims (Article 2946 of the Italian Civil Code). During that time we only use it to defend our rights if a dispute arises (Article 17, paragraph 3, point (e) of the GDPR); once it expires, it's deleted.</p>
   </section>
 
   <section>
     <h2><span class="n">05</span> Who else sees it</h2>
-    <p>Only three parties, all strictly necessary to make the app work:</p>
+    <p>Only four parties, all strictly necessary to make the app work:</p>
     <ul>
-      <li><strong>Supabase</strong> — provider of the authentication and sync infrastructure, used as data processor. Hosts your account's data.</li>
+      <li><strong>Supabase</strong> — provider of the authentication and sync infrastructure, used as data processor. Hosts your account's data. The servers are in Frankfurt, Germany. The provider is a company based in Singapore (Supabase Pte. Ltd.): access from outside the Union is possible, with the European Commission's standard contractual clauses included in its data processing agreement.</li>
       <li><strong>Resend</strong> — delivers the service emails (the confirmation code, password recovery) from a Resend account belonging to the controller, connected to Supabase to send them: it receives your email address and the text of the message, nothing else. It's a US company: messages are processed on infrastructure in Ireland, but access from the United States is possible, with the safeguards required by the GDPR: Resend participates in the EU-U.S. Data Privacy Framework and its data processing agreement includes the European Commission's standard contractual clauses.</li>
+      <li><strong>Microsoft (Outlook)</strong> — the mailbox where the messages you write to us arrive. It is a US company: access from the United States is possible, with the safeguards required by the GDPR (EU-U.S. Data Privacy Framework and the European Commission's standard contractual clauses).</li>
       <li><strong>Apple</strong> — handles payment for the Premium subscription as an independent controller of the billing data: ShiftPro neither sees nor receives it.</li>
     </ul>
     <p>No one else — no advertising network, no behavioural analytics service, no selling of data to third parties.</p>
